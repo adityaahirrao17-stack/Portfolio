@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Projects - Aditya Ahirrao</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Fixed Navbar -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  
+  <nav class="glass-navbar">
+    <label for="menu-toggle" class="menu-close">&times;</label>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#education">Education</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#achievements">Achievements</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Liquid Glass SVG Filters -->
+  <svg class="liquid-glass-svg" xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+    <defs>
+      <filter id="liquidGlassNavbar" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blurred" />
+        <feTurbulence 
+          type="fractalNoise" 
+          baseFrequency="0.003" 
+          numOctaves="6" 
+          seed="10"
+          result="noise" 
+        />
+        <feDisplacementMap 
+          in="blurred" 
+          in2="noise" 
+          scale="80" 
+          xChannelSelector="R" 
+          yChannelSelector="G" 
+          result="refracted" 
+        />
+        <feColorMatrix 
+          in="refracted" 
+          type="matrix" 
+          values="1.05 0    0    0  0
+                  0    1.05 0    0  0
+                  0    0    1.1  0  0
+                  0    0    0    1  0"
+          result="enhanced" 
+        />
+        <feSpecularLighting 
+          in="blurred" 
+          surfaceScale="1.5" 
+          specularConstant="0.4" 
+          specularExponent="40" 
+          lighting-color="#ffffff"
+          result="specular"
+        >
+          <fePointLight x="400" y="-50" z="200" />
+        </feSpecularLighting>
+        <feGaussianBlur in="specular" stdDeviation="2" result="specular_soft" />
+        <feComposite 
+          in="specular_soft" 
+          in2="enhanced" 
+          operator="arithmetic" 
+          k1="0" k2="1" k3="0.1" k4="0"
+          result="lit" 
+        />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- All Projects Section -->
+  <section class="all-projects-section">
+    <div class="all-projects-hero">
+      <h1 class="all-projects-title">All Projects</h1>
+      <p class="all-projects-subtitle">Explore my portfolio of design and development work</p>
+    </div>
+
+    <div class="all-projects-grid">
+      <!-- Project 1: SWASTHYAM -->
+      <div class="project-card">
+        <div class="project-card__image">
+          <img src="assets/swasthyam.jpg" alt="Swasthyam">
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">SWASTHYAM</h3>
+          <p class="project-card__description">Healthcare management system for patient monitoring and medical records.</p>
+          <div class="project-card__tags">
+            <span class="project-tag">Healthcare</span>
+            <span class="project-tag">UI/UX</span>
+            <span class="project-tag">Mobile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: SMART HEAL -->
+      <div class="project-card">
+        <div class="project-card__image">
+          <img src="assets/smartheal.jpg" alt="Smart Heal">
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">SMART HEAL (RUNVERVE)</h3>
+          <p class="project-card__description">Smart health tracking application with AI-powered insights and recommendations.</p>
+          <div class="project-card__tags">
+            <span class="project-tag">AI</span>
+            <span class="project-tag">Health Tech</span>
+            <span class="project-tag">Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: HEALTH COMPANION -->
+      <div class="project-card">
+        <div class="project-card__image">
+          <img src="assets/healthcompanion.jpg" alt="Health Companion">
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">HEALTH COMPANION</h3>
+          <p class="project-card__description">Personal health assistant with wellness tracking and health goal management.</p>
+          <div class="project-card__tags">
+            <span class="project-tag">Wellness</span>
+            <span class="project-tag">Tracking</span>
+            <span class="project-tag">Mobile App</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: DESOC WEBSITE -->
+      <div class="project-card">
+        <div class="project-card__image">
+          <img src="assets/desocwebsite.jpg" alt="DeSoc Website">
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">DESOC WEBSITE</h3>
+          <p class="project-card__description">Official website for Design Society showcasing events, team, and achievements.</p>
+          <div class="project-card__tags">
+            <span class="project-tag">Web Design</span>
+            <span class="project-tag">Frontend</span>
+            <span class="project-tag">Responsive</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: MEDICATION REMINDER -->
+      <div class="project-card">
+        <div class="project-card__image">
+          <img src="assets/medreminder.jpg" alt="Medication Reminder">
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">MEDICATION REMINDER</h3>
+          <p class="project-card__description">Smart medication reminder app with notifications and tracking for better health management.</p>
+          <div class="project-card__tags">
+            <span class="project-tag">Healthcare</span>
+            <span class="project-tag">Notifications</span>
+            <span class="project-tag">Mobile App</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-to-home">
+      <a href="index.html" class="view-all-btn">← Back to Home</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2 class="footer-title">Aditya <span>Ahirrao</span></h2>
+        <p class="footer-subtitle">UI/UX Designer & Developer</p>
+        <address class="footer-address">
+          Nashik, Maharashtra<br>
+          India
+        </address>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="index.html#achievements">Achievements</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/adityaahirrao17-stack" target="_blank">GitHub</a></li>
+          <li><a href="https://www.instagram.com/alpha_maverick45" target="_blank">Instagram</a></li>
+          <li><a href="https://leetcode.com/u/alpha_maverick45/" target="_blank">LeetCode</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Social</h3>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/alpha_maverick45" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://github.com/adityaahirrao17-stack" target="_blank" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Aditya Ahirrao. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
