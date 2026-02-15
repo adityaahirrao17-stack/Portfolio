@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Aditya Ahirrao - UI/UX Designer and App Developer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Development server - serve the files locally'"
+  },
+  "keywords": [
+    "portfolio",
+    "ui-ux",
+    "designer",
+    "developer"
+  ],
+  "author": "Aditya Ahirrao",
+  "license": "MIT"
+}

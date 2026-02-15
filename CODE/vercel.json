@@ -1,0 +1,16 @@
+{
+  "buildCommand": "echo 'Building static site'",
+  "outputDirectory": ".",
+  "publicSource": ".",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/projects",
+      "destination": "/projects.html"
+    }
+  ]
+}
