@@ -244,10 +244,10 @@ body {
   pointer-events: none;
 }
 
-.circle-overlay-text span {
+.circle-overlay-text li {
   font-family: 'League Spartan', sans-serif;
   opacity: 0.75;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
@@ -261,6 +261,7 @@ body {
   height: 4px;
   background: linear-gradient(90deg, #10ff73, #00b83a);
   border-radius: 2px;
+  margin-left: -10%;
   margin-bottom: 8px;
   box-shadow: 0 0 5px rgba(16, 255, 115, 0.5);
 }
@@ -540,7 +541,7 @@ body {
   height: 4px;
   background: linear-gradient(90deg, #10ff73, #00b83a);
   border-radius: 2px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   box-shadow: 0 0 12px rgba(16, 255, 115, 0.5);
 }
 
@@ -556,8 +557,8 @@ body {
 
 .crafting-desc {
   font-family: 'League Spartan', sans-serif;
-  margin-top: 100px;
-  font-size: 14px;
+  margin-top: 900px;
+  font-size: 25px;
   font-weight: 400;
   color: #888888;
   line-height: 1.6;
