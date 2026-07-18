@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Create a temporary download link
       const link = document.createElement('a');
       link.href = 'assets/CV_Aditya_Ahirrao.pdf'; // Path to your resume
-      link.download = 'Aditya_Ahirrao_Resume.pdf'; // Downloaded file name
+      link.download = 'CV_Aditya_Ahirrao.pdf'; // Downloaded file name
 
       document.body.appendChild(link);
       link.click();
