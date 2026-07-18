@@ -43,6 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeButton = document.querySelector('.menu-close');
   const menuIcon = document.querySelector('.menu-icon');
 
+  document.querySelectorAll('.experience-carousel__track--leadership').forEach(track => {
+    Array.from(track.children).forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  });
+
   const openMenu = () => {
     body.classList.add('menu-open');
     if (menuToggle) menuToggle.checked = true;
