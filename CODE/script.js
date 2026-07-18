@@ -1,6 +1,35 @@
 // Portfolio JavaScript
 // Liquid Glass effect is handled via CSS backdrop-filter with SVG filter
 
+// Intro greeting animation
+(function() {
+  const introLoader = document.getElementById('introLoader');
+  const introWord = document.getElementById('introLoaderWord');
+  const greetings = ['Hello', 'Namaste', 'Bonjour', 'Hola', 'Konnichiwa', 'Ciao'];
+
+  if (!introLoader || !introWord) return;
+
+  document.body.classList.add('intro-lock');
+
+  greetings.forEach((greeting, index) => {
+    setTimeout(() => {
+      introWord.classList.remove('is-switching');
+      introWord.textContent = greeting;
+      void introWord.offsetWidth;
+      introWord.classList.add('is-switching');
+    }, index * 760);
+  });
+
+  setTimeout(() => {
+    introLoader.classList.add('is-hidden');
+    document.body.classList.remove('intro-lock');
+  }, 5000);
+
+  setTimeout(() => {
+    introLoader.remove();
+  }, 5800);
+})();
+
 // Initialize EmailJS
 (function() {
   emailjs.init("tNoh2RcQKithv_QJG");
@@ -350,18 +379,23 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 // Resume Button Handler
-(function() {
-  const resumeButtons = document.querySelectorAll('.resume-download-btn, .review-badge[href*="resume"], a[href*="resume"]');
-  
+(function () {
+  const resumeButtons = document.querySelectorAll(
+    '.resume-download-btn, .review-badge[href*="resume"], a[href*="resume"]'
+  );
+
   resumeButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
       e.preventDefault();
-      
-      // Create and show modal/alert
-      const message = "Aditya is still preparing his resume, he would take some time, so chill and wait.";
-      
-      // Create a custom alert using confirm (simple approach)
-      alert(message);
+
+      // Create a temporary download link
+      const link = document.createElement('a');
+      link.href = 'assets/CV_Aditya_Ahirrao.pdf'; // Path to your resume
+      link.download = 'Aditya_Ahirrao_Resume.pdf'; // Downloaded file name
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     });
   });
 })();

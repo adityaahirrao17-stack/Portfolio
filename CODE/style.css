@@ -22,6 +22,68 @@ body {
     position: relative;
 }
 
+body.intro-lock {
+  overflow: hidden;
+}
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: #030303;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.75s ease, visibility 0.75s ease;
+}
+
+.intro-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-loader__word {
+  color: rgba(255, 255, 255, 0.92);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(58px, 7vw, 104px);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  text-rendering: geometricPrecision;
+  opacity: 0;
+  transform: translateY(12px) scale(0.985);
+  animation: introWordReveal 0.78s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.intro-loader__word.is-switching {
+  animation: introWordSwitch 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes introWordReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes introWordSwitch {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  42%, 72% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(1.01);
+  }
+}
+
 /* Hidden SVG for filters */
 .liquid-glass-svg {
   position: absolute;
@@ -229,47 +291,141 @@ body {
   }
 }
 
-/* Overlay text on circle image */
-.circle-overlay-text {
+/* Premium skills card on hero */
+.skills-glass-card {
   position: absolute;
-  margin-top: 0px;
-  top: 30%;
+  top: 25%;
   left: 10%;
-  z-index: 9999;
+  z-index: 20;
+  width: min(320px, 82vw);
+  padding: 22px 20px 20px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-width: 90%;
+  gap: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(255, 255, 255, 0.32);
+  border-left-color: rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)),
+    rgba(8, 12, 10, 0.48);
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.36),
+    0 8px 24px rgba(16, 255, 115, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
   overflow: visible;
+}
+
+.skills-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 22% 0%, rgba(16, 255, 115, 0.13), transparent 36%);
   pointer-events: none;
 }
 
-.circle-overlay-text li {
-  font-family: 'League Spartan', sans-serif;
-  opacity: 0.75;
-  font-size: 25px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.2;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  white-space: normal;
-  max-width: 450px;
+.skills-card-header {
+  position: relative;
+  z-index: 2;
 }
 
-.circle-overlay-underline {
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #10ff73, #00b83a);
-  border-radius: 2px;
-  margin-left: -10%;
-  margin-bottom: 8px;
-  box-shadow: 0 0 5px rgba(16, 255, 115, 0.5);
+.skills-card-header h2 {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.skills-card-underline {
+  display: block;
+  width: 52px;
+  height: 2px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #10ff73, rgba(255, 255, 255, 0.2), #10ff73);
+  background-size: 220% 100%;
+  box-shadow: 0 0 16px rgba(16, 255, 115, 0.45);
+  animation: skillsUnderlineSweep 2.8s ease-in-out infinite;
+}
+
+.skills-list {
+  position: relative;
+  z-index: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 11px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: skillFadeSlide 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skills-list li:nth-child(1) { animation-delay: 0.16s; }
+.skills-list li:nth-child(2) { animation-delay: 0.28s; }
+.skills-list li:nth-child(3) { animation-delay: 0.4s; }
+.skills-list li:nth-child(4) { animation-delay: 0.52s; }
+.skills-list li:nth-child(5) { animation-delay: 0.64s; }
+
+.skills-list li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-right: 12px;
+  border-radius: 50%;
+  background: #10ff73;
+  box-shadow: 0 0 14px rgba(16, 255, 115, 0.85);
+  flex: 0 0 auto;
+}
+
+.skills-list li:hover {
+  transform: translateX(6px);
+  border-color: rgba(16, 255, 115, 0.36);
+  background: rgba(16, 255, 115, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+@keyframes skillsUnderlineSweep {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes skillFadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
-  .circle-overlay-text{
+  .skills-glass-card{
     display: none;
   }
+
 }
 
 /* Intro text on right side of circle image */
