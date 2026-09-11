@@ -2,10 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio - Aditya Ahirrao</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Aditya Ahirrao — AI systems and full-stack engineer, UI/UX designer. Smart India Hackathon 2025 winner, AI/ML intern at HAL, building RAG pipelines, LLM-powered products and scalable software.">
+  <meta name="author" content="Aditya Ahirrao">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aditya Ahirrao — AI Engineer & UI/UX Designer">
+  <meta property="og:description" content="RAG pipelines, LLM-powered products, full-stack engineering and interface design.">
+  <meta property="og:image" content="assets/Group 17.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Aditya Ahirrao — AI Engineer & UI/UX Designer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="enhance.css">
+  <script>
+    // Set before first paint so reveal-on-scroll elements never flash in.
+    document.documentElement.classList.add('fx');
+    // Safety net: if enhance.js never runs, un-hide everything.
+    setTimeout(function () {
+      if (!window.__fxReady) document.documentElement.classList.remove('fx');
+    }, 2500);
+  </script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
@@ -15,8 +35,8 @@
   </div>
 
   <!-- Images -->
-  <div class="circle">
-    <div class="skills-glass-card" id="skills">
+  <div class="circle" id="home">
+    <div class="skills-glass-card">
       <div class="skills-card-header">
         <h2>Skills</h2>
         <span class="skills-card-underline" aria-hidden="true"></span>
@@ -32,25 +52,42 @@
     <div class="circle-intro-text">
       <p>Hi, I'm <strong>Aditya</strong>, a UI/UX designer and Computer Science undergrad specializing in AI systems, backend engineering, and full-stack development. I have been building RAG applications, LLM-powered solutions, and scalable software systems</p>
     </div>
-    <img src="assets/Group 17.png" alt="Circle background">
+    <img src="assets/Group 17.png" alt="Circle background" fetchpriority="high">
   </div>
+
+  <!-- Mobile-only hero summary (hidden on desktop, where the glass cards handle this) -->
+  <section class="hero-mobile" aria-label="Introduction">
+    <p class="hero-mobile__kicker">AI Engineer · Full Stack · UI/UX</p>
+    <h1 class="hero-mobile__name">Aditya Ahirrao</h1>
+    <p class="hero-mobile__text">
+      Building <strong>RAG applications</strong>, LLM-powered solutions and scalable
+      software systems — with an eye for how they look and feel.
+    </p>
+    <ul class="hero-mobile__chips" aria-label="Core skills">
+      <li>AI Systems</li>
+      <li>RAG Development</li>
+      <li>Full Stack</li>
+      <li>UI/UX Design</li>
+      <li>Research</li>
+    </ul>
+  </section>
 
   <!-- Social Media Links -->
   <section class="social-section">
     <div class="social-container">
-      <a href="https://www.instagram.com/alpha_maverick45" target="_blank" class="social-link" aria-label="Instagram">
+      <a href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
           <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
         </svg>
       </a>
-      <a href="https://github.com/adityaahirrao17-stack" target="_blank" class="social-link" aria-label="GitHub">
+      <a href="https://github.com/adityaahirrao17-stack" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
         </svg>
       </a>
-      <a href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf" class="resume-download-btn" aria-label="Download Resume">
+      <a href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf" class="resume-download-btn" data-magnetic aria-label="Download Resume">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
@@ -58,14 +95,14 @@
         </svg>
         <span>Resume</span>
       </a>
-      <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" class="social-link" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
           <rect x="2" y="9" width="4" height="12"></rect>
           <circle cx="4" cy="4" r="2"></circle>
         </svg>
       </a>
-      <a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" class="social-link" aria-label="LeetCode">
+      <a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LeetCode">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
           <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path>
         </svg>
@@ -80,19 +117,121 @@
     <p class="crafting-desc">Hello, I am Aditya Ahirrao, a UI/UX Desginer, an alumnus of the Services Preparatory Institute (SPI), Computer Science and Design undergraduate specializing in AI systems, backend engineering, and full-stack application development. Experienced in building Retrieval-Augmented Generation (RAG) applications, LLM-powered solutions, and scalable software systems. Smart India Hackathon 2025 Winner, AI-ML Intern at Hindustan Aeronautics Limited (HAL), and proven student leader with experience delivering high-impact technical projects and initiatives</p>
   </section>
 
+  <!-- Stats Band -->
+  <section class="stats-band" aria-label="Key numbers">
+    <div class="stats-band__inner">
+      <div class="stat-chip">
+        <div class="stat-chip__num" data-count="10000" data-suffix="+">0</div>
+        <div class="stat-chip__label">Manual pages indexed<br>by the HAL RAG pipeline</div>
+      </div>
+      <div class="stat-chip">
+        <div class="stat-chip__num" data-count="1000" data-suffix="+">0</div>
+        <div class="stat-chip__label">Participants at INNOVERA,<br>branding led end-to-end</div>
+      </div>
+      <div class="stat-chip">
+        <div class="stat-chip__num" data-count="8.76" data-decimals="2">0</div>
+        <div class="stat-chip__label">CGPA in B.Tech<br>Computer Science &amp; Design</div>
+      </div>
+      <div class="stat-chip">
+        <div class="stat-chip__num" data-count="24.4" data-decimals="1" data-suffix="%">0</div>
+        <div class="stat-chip__label">Audience growth driven<br>in a 4-month campaign</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills &amp; Stack -->
+  <section class="stack-section" id="skills">
+    <div class="section-head">
+      <h2 class="section-head__title">Skills &amp; Stack</h2>
+      <div class="section-head__underline" aria-hidden="true"></div>
+      <p class="section-head__sub">The toolkit I reach for when turning an idea into something people can actually use.</p>
+    </div>
+
+    <div class="stack-grid">
+      <article class="stack-card" data-reveal>
+        <div class="stack-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+            <rect x="9" y="9" width="6" height="6" rx="1"></rect>
+            <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"></path>
+          </svg>
+        </div>
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Retrieval pipelines that answer with citations, not guesses.</p>
+        <ul class="stack-card__tags">
+          <li>RAG</li><li>LangChain</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Ollama</li><li>Docling</li>
+        </ul>
+      </article>
+
+      <article class="stack-card" data-reveal>
+        <div class="stack-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+            <path d="M4 5v7c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path>
+            <path d="M4 12v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"></path>
+          </svg>
+        </div>
+        <h3>Backend &amp; Data</h3>
+        <p>APIs and data layers built to stay fast as they grow.</p>
+        <ul class="stack-card__tags">
+          <li>Python</li><li>FastAPI</li><li>Node.js</li><li>REST</li><li>MongoDB</li><li>SQL</li>
+        </ul>
+      </article>
+
+      <article class="stack-card" data-reveal>
+        <div class="stack-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+            <path d="M8 21h8M12 17v4"></path>
+          </svg>
+        </div>
+        <h3>Frontend &amp; Mobile</h3>
+        <p>Interfaces that feel considered on a 6-inch screen and a 27-inch one.</p>
+        <ul class="stack-card__tags">
+          <li>React</li><li>React Native</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Responsive UI</li>
+        </ul>
+      </article>
+
+      <article class="stack-card" data-reveal>
+        <div class="stack-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r="2.5"></circle>
+            <circle cx="17.5" cy="13.5" r="2.5"></circle>
+            <circle cx="8.5" cy="7.5" r="2.5"></circle>
+            <circle cx="6.5" cy="14.5" r="2.5"></circle>
+            <path d="M12 22a10 10 0 1 1 0-20"></path>
+          </svg>
+        </div>
+        <h3>Design &amp; Research</h3>
+        <p>User research first, then pixels — 20+ high-fidelity screens shipped.</p>
+        <ul class="stack-card__tags">
+          <li>Figma</li><li>Design Systems</li><li>Prototyping</li><li>User Research</li><li>Branding</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="stack-marquee" aria-hidden="true">
+      <div class="stack-marquee__track">
+        <span>Python</span><span>·</span><span>RAG</span><span>·</span><span>LLMs</span><span>·</span><span>ChromaDB</span><span>·</span><span>FastAPI</span><span>·</span><span>React</span><span>·</span><span>React Native</span><span>·</span><span>Figma</span><span>·</span><span>Node.js</span><span>·</span><span>MongoDB</span><span>·</span><span>Ollama</span><span>·</span><span>Design Systems</span><span>·</span>
+        <span>Python</span><span>·</span><span>RAG</span><span>·</span><span>LLMs</span><span>·</span><span>ChromaDB</span><span>·</span><span>FastAPI</span><span>·</span><span>React</span><span>·</span><span>React Native</span><span>·</span><span>Figma</span><span>·</span><span>Node.js</span><span>·</span><span>MongoDB</span><span>·</span><span>Ollama</span><span>·</span><span>Design Systems</span><span>·</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Fixed Navbar -->
   <input type="checkbox" id="menu-toggle">
   <label for="menu-toggle" class="menu-icon">&#9776;</label>
   
-  <nav class="glass-navbar">
-    <label for="menu-toggle" class="menu-close">&times;</label>
+  <nav class="glass-navbar" aria-label="Primary">
+    <label for="menu-toggle" class="menu-close" aria-label="Close menu">&times;</label>
     <ul>
       <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact-me">Contact</a></li>
     </ul>
   </nav>
 
@@ -169,110 +308,106 @@
 
   <!-- Work Experience Header -->
   <!-- Work Experience Section with Two Columns -->
-  <section class="experience-section-wrapper" id="experience">
-    <!-- Work Experience Title -->
-    <div class="section-title-container section-title-work">
-      <h3 class="section-title-left">Work Experience</h3>
-      <div class="section-title-underline"></div>
+  <section class="hof" id="experience">
+    <div class="hof__header">
+      <p class="hof__kicker"><span></span>Hall of Fame<span></span></p>
+      <h2 class="hof__title">Where I've Made My Mark</h2>
+      <p class="hof__sub">Roles held, teams led and work shipped &mdash; the record so far.</p>
     </div>
 
-    <div class="experience-carousel work-experience-carousel" aria-label="Work experience carousel">
-      <div class="experience-carousel__track experience-carousel__track--work">
-        <article class="work-experience-card">
-          <div class="work-experience-card__meta">
-            <span>June 2026 - July 2026</span>
-            <span>Nashik, India</span>
-          </div>
-          <h4>AI &amp; Machine Learning Intern</h4>
-          <h3>Hindustan Aeronautics Ltd</h3>
-          <p class="work-experience-card__company"></p>
-          <ul>
+    <!-- ---------- Work Experience : vertical timeline ---------- -->
+    <div class="hof-block">
+      <h3 class="hof-block__title">
+        <span class="hof-block__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        </span>
+        <span>Work Experience</span>
+        <span class="hof-block__rule" aria-hidden="true"></span>
+        <span class="hof-block__count">03</span>
+      </h3>
+
+      <ol class="xp-rail">
+        <li class="xp-entry" data-reveal>
+          <div class="xp-entry__marker" aria-hidden="true"><span>01</span></div>
+          <article class="xp-card">
+            <header class="xp-card__head">
+              <div class="xp-card__titles">
+                <h4>AI &amp; Machine Learning Intern</h4>
+                <p class="xp-card__org">Hindustan Aeronautics Ltd <span class="xp-card__pill">Internship</span></p>
+              </div>
+              <div class="xp-card__meta">
+                <span class="xp-card__date">Jun 2026 &mdash; Jul 2026</span>
+                <span class="xp-card__place">Nashik, India</span>
+              </div>
+            </header>
+            <ul class="xp-card__points">
             <li>Engineered a RAG pipeline with semantic search and vector embeddings for 10,000+ pages and 500+ figures of aircraft manuals and accident reports.</li>
             <li>Built retrieval with ChromaDB and Sentence Transformers, reducing document retrieval from minutes to seconds.</li>
             <li>Used Docling for structured extraction from manuals, then deployed local Ollama LLMs for citation-backed responses and analytics.</li>
-          </ul>
-        </article>
+            </ul>
+            <ul class="xp-card__stack" aria-label="Tools used"><li>RAG</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Docling</li><li>Ollama</li></ul>
+          </article>
+        </li>
 
-        <article class="work-experience-card">
-          <div class="work-experience-card__meta">
-            <span>Feb 2026 - June 2026</span>
-            <span>Remote</span>
-          </div>
-          <h4>Digital Marketing &amp; Content Strategist</h4>
-          <h3>WRS Energy Solutions</h3>
-          <p class="work-experience-card__company"></p>
-          <ul>
+        <li class="xp-entry" data-reveal>
+          <div class="xp-entry__marker" aria-hidden="true"><span>02</span></div>
+          <article class="xp-card">
+            <header class="xp-card__head">
+              <div class="xp-card__titles">
+                <h4>Digital Marketing &amp; Content Strategist</h4>
+                <p class="xp-card__org">WRS Energy Solutions <span class="xp-card__pill">Contract</span></p>
+              </div>
+              <div class="xp-card__meta">
+                <span class="xp-card__date">Feb 2026 &mdash; Jun 2026</span>
+                <span class="xp-card__place">Remote</span>
+              </div>
+            </header>
+            <ul class="xp-card__points">
             <li>Applied digital marketing and SEO fundamentals to plan audience-focused content aligned with brand messaging.</li>
             <li>Drove 24.4% net growth in targeted Instagram followers across a focused 4-month content strategy period.</li>
-          </ul>
-        </article>
+            </ul>
+            <ul class="xp-card__stack" aria-label="Tools used"><li>SEO</li><li>Content Strategy</li><li>Analytics</li></ul>
+          </article>
+        </li>
 
-        <article class="work-experience-card">
-          <div class="work-experience-card__meta">
-            <span>Nov 2025 - Jan 2026</span>
-            <span>Remote</span>
-          </div>
-          <h4>UI/UX Designer &amp; Researcher</h4>
-          <h3>Runverve | Smart Heal</h3>
-          <p class="work-experience-card__company"></p>
-          <ul>
+        <li class="xp-entry" data-reveal>
+          <div class="xp-entry__marker" aria-hidden="true"><span>03</span></div>
+          <article class="xp-card">
+            <header class="xp-card__head">
+              <div class="xp-card__titles">
+                <h4>UI/UX Designer &amp; Researcher</h4>
+                <p class="xp-card__org">Runverve | Smart Heal <span class="xp-card__pill">Sponsored Project</span></p>
+              </div>
+              <div class="xp-card__meta">
+                <span class="xp-card__date">Nov 2025 &mdash; Jan 2026</span>
+                <span class="xp-card__place">Remote</span>
+              </div>
+            </header>
+            <ul class="xp-card__points">
             <li>Conducted user research and designed 20+ high-fidelity Figma screens for a sponsored React Native application.</li>
             <li>Integrated third-party RESTful APIs for secure data exchange and real-time content synchronization.</li>
-          </ul>
-        </article>
-
-        <article class="work-experience-card" aria-hidden="true">
-          <div class="work-experience-card__meta">
-            <span>June 2026 - July 2026</span>
-            <span>Nashik, India</span>
-          </div>
-          <h4>AI &amp; Machine Learning Intern</h4>
-          <p class="work-experience-card__company">Hindustan Aeronautics Limited (HAL)</p>
-          <ul>
-            <li>Engineered a RAG pipeline with semantic search and vector embeddings for 10,000+ pages and 500+ figures of aircraft manuals and accident reports.</li>
-            <li>Built retrieval with ChromaDB and Sentence Transformers, reducing document retrieval from minutes to seconds.</li>
-            <li>Used Docling for structured extraction from manuals, then deployed local Ollama LLMs for citation-backed responses and analytics.</li>
-          </ul>
-        </article>
-
-        <article class="work-experience-card" aria-hidden="true">
-          <div class="work-experience-card__meta">
-            <span>Feb 2026 - June 2026</span>
-            <span>Remote</span>
-          </div>
-          <h4>Digital Marketing &amp; Content Strategist</h4>
-          <p class="work-experience-card__company">WRS Energy Solutions</p>
-          <ul>
-            <li>Applied digital marketing and SEO fundamentals to plan audience-focused content aligned with brand messaging.</li>
-            <li>Drove 24.4% net growth in targeted Instagram followers across a focused 4-month content strategy period.</li>
-          </ul>
-        </article>
-
-        <article class="work-experience-card" aria-hidden="true">
-          <div class="work-experience-card__meta">
-            <span>Nov 2025 - Jan 2026</span>
-            <span>Remote</span>
-          </div>
-          <h4>UI/UX Designer &amp; Researcher</h4>
-          <p class="work-experience-card__company">Runverve | Smart Heal</p>
-          <ul>
-            <li>Conducted user research and designed 20+ high-fidelity Figma screens for a sponsored React Native application.</li>
-            <li>Integrated third-party RESTful APIs for secure data exchange and real-time content synchronization.</li>
-          </ul>
-        </article>
-      </div>
+            </ul>
+            <ul class="xp-card__stack" aria-label="Tools used"><li>Figma</li><li>User Research</li><li>React Native</li><li>REST APIs</li></ul>
+          </article>
+        </li>
+      </ol>
     </div>
 
-    <div class="section-title-container section-title-leadership">
-      <h3 class="section-title-left">Leadership</h3>
-      <div class="section-title-underline"></div>
-    </div>
-    
-    <!-- Left Column: Work Experience Cards -->
-    <div class="experience-grid experience-carousel leadership-carousel">
-      <div class="experience-carousel__track experience-carousel__track--leadership">
+    <!-- ---------- Leadership : honour wall ---------- -->
+    <div class="hof-block">
+      <h3 class="hof-block__title">
+        <span class="hof-block__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"></path></svg>
+        </span>
+        <span>Leadership</span>
+        <span class="hof-block__rule" aria-hidden="true"></span>
+        <span class="hof-block__count">05</span>
+      </h3>
+
+      <div class="honor-wall">
       <!-- Design Society Card -->
-      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" class="experience-card experience-card--desoc">
+      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--desoc">
+        <span class="honor-card__ribbon honor-card__ribbon--gold">President</span>
         <div class="experience-card__top">
           <div class="experience-card__logo experience-card__logo--desoc" aria-hidden="true"></div>
           <div class="experience-card__heading">
@@ -297,7 +432,8 @@
       </a>
 
       <!-- Young Indians Card -->
-      <a href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA?utm_source=share&utm_medium=member_desktop&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" class="experience-card experience-card--yi">
+      <a href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA?utm_source=share&utm_medium=member_desktop&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--yi">
+        <span class="honor-card__ribbon honor-card__ribbon--gold">Chairman</span>
         <div class="experience-card__top experience-card__top--yi">
           <div class="experience-card__logo experience-card__logo--yi" aria-hidden="true"></div>
           <div class="experience-card__heading experience-card__heading--yi">
@@ -323,7 +459,8 @@
       </a>
 
       <!-- Innovera Card -->
-      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" class="experience-card experience-card--innovera">
+      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--innovera">
+        <span class="honor-card__ribbon honor-card__ribbon--silver">Head</span>
         <div class="experience-card__top experience-card__top--innovera">
           <div class="experience-card__logo experience-card__logo--innovera" aria-hidden="true"></div>
           <div class="experience-card__heading experience-card__heading--innovera">
@@ -341,7 +478,8 @@
       </a>
 
       <!-- ISTE Card -->
-      <div class="experience-card experience-card--iste">
+      <div class="honor-card experience-card experience-card--iste">
+        <span class="honor-card__ribbon honor-card__ribbon--bronze">Core</span>
         <div class="experience-card__top experience-card__top--iste">
           <div class="experience-card__logo experience-card__logo--iste" aria-hidden="true"></div>
           <div class="experience-card__heading">
@@ -359,7 +497,8 @@
       </div>
 
       <!-- TEDx Card -->
-      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_tedxkkwieer-internationalevent-ideasthatchangetheworld-activity-7306894825503522816-TOxg?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" class="experience-card experience-card--tedx">
+      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_tedxkkwieer-internationalevent-ideasthatchangetheworld-activity-7306894825503522816-TOxg?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--tedx">
+        <span class="honor-card__ribbon honor-card__ribbon--bronze">Design</span>
         <div class="experience-card__top experience-card__top--tedx">
           <div class="experience-card__logo experience-card__logo--tedx" aria-hidden="true"></div>
           <div class="experience-card__heading">
@@ -377,7 +516,7 @@
       </a>
 
       <!-- Tic Tac Toe Game Card -->
-      <div class="experience-card experience-card--tictactoe">
+      <div class="honor-card honor-card--game experience-card experience-card--tictactoe">
         <div class="tictactoe-container">
           <h3 class="tictactoe-title">Tic Tac Toe</h3>
           <p class="tictactoe-subtitle">Let's see if you can defeat Aditya</p>
@@ -403,21 +542,23 @@
       </div>
       </div>
     </div>
+  </section>
 
-    
-
-    <!-- Contact Me Title -->
-    <div class="section-title-container section-title-contact">
-      <h3 class="section-title-right">Contact Me</h3>
-      <div class="section-title-underline"></div>
+  <!-- ---------- Contact ---------- -->
+  <section class="contact-section" id="contact-me" aria-label="Contact">
+    <div class="section-head">
+      <h2 class="section-head__title">Contact Me</h2>
+      <div class="section-head__underline" aria-hidden="true"></div>
+      <p class="section-head__sub">Hiring, collaborating, or just curious about something I built? The form reaches me directly.</p>
     </div>
 
-    <!-- Right Column: Contact Me Card -->
     <div class="contact-card">
       <div class="contact-card__header">
-        <p>Have a project in mind? Let's work together!</p>
+        <span class="contact-card__status"><i aria-hidden="true"></i> Open to internships &amp; freelance</span>
+        <h3>Let's build something</h3>
+        <p>Have a project in mind? Tell me about it — I usually reply within a day.</p>
       </div>
-      
+
       <form class="contact-form" id="contactForm">
         <div class="form-group">
           <label for="name">Name</label>
@@ -451,8 +592,7 @@
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
         </button>
-        <div class="form-status" id="formStatus"></div>
-      </form>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
       </form>
     </div>
   </section>
@@ -469,7 +609,7 @@
 
     <div class="education-timeline">
       <!-- Education Item 1 -->
-      <div class="education-item">
+      <div class="education-item" data-reveal>
         <div class="education-marker"></div>
         <div class="education-content">
           <div class="education-year">2015 - 2021</div>
@@ -480,7 +620,7 @@
       </div>
 
       <!-- Education Item 2 -->
-      <div class="education-item">
+      <div class="education-item" data-reveal>
         <div class="education-marker"></div>
         <div class="education-content">
           <div class="education-year">2021 - 2023</div>
@@ -491,7 +631,7 @@
       </div>
 
       <!-- Education Item 3 -->
-      <div class="education-item">
+      <div class="education-item" data-reveal>
         <div class="education-marker"></div>
         <div class="education-content">
           <div class="education-year">2021 - 2023</div>
@@ -502,7 +642,7 @@
       </div>
 
       <!-- Education Item 4 -->
-      <div class="education-item">
+      <div class="education-item" data-reveal>
         <div class="education-marker"></div>
         <div class="education-content">
           <div class="education-year">2023 - Present</div>
@@ -525,9 +665,9 @@
 
     <div class="projects-grid">
       <!-- Project Card 1 -->
-      <div class="project-card">
+      <div class="project-card" data-reveal>
         <div class="project-card__image">
-          <img src="assets/swasthyam.jpg" alt="Swasthyam">
+          <img src="assets/swasthyam.jpg" alt="Swasthyam" loading="lazy" decoding="async">
         </div>
         <div class="project-card__content">
           <h3 class="project-card__title">SWASTHYAM</h3>
@@ -541,9 +681,9 @@
       </div>
 
       <!-- Project Card 2 -->
-      <div class="project-card">
+      <div class="project-card" data-reveal>
         <div class="project-card__image">
-          <img src="assets/smartheal.jpg" alt="Smart Heal">
+          <img src="assets/smartheal.jpg" alt="Smart Heal" loading="lazy" decoding="async">
         </div>
         <div class="project-card__content">
           <h3 class="project-card__title">SMART HEAL (RUNVERVE)</h3>
@@ -557,9 +697,9 @@
       </div>
 
       <!-- Project Card 3 -->
-      <div class="project-card">
+      <div class="project-card" data-reveal>
         <div class="project-card__image">
-          <img src="assets/healthcompanion.jpg" alt="Health Companion">
+          <img src="assets/healthcompanion.jpg" alt="Health Companion" loading="lazy" decoding="async">
         </div>
         <div class="project-card__content">
           <h3 class="project-card__title">HEALTH COMPANION</h3>
@@ -573,9 +713,9 @@
       </div>
 
       <!-- Project Card 4 -->
-      <div class="project-card">
+      <div class="project-card" data-reveal>
         <div class="project-card__image">
-          <img src="assets/desocwebsite.jpg" alt="DeSoc Website">
+          <img src="assets/desocwebsite.jpg" alt="DeSoc Website" loading="lazy" decoding="async">
         </div>
         <div class="project-card__content">
           <h3 class="project-card__title">DESOC WEBSITE</h3>
@@ -590,56 +730,108 @@
     </div>
 
     <div class="projects-view-all">
-      <a href="projects.html" class="view-all-btn">View All Projects →</a>
+      <a href="projects.html" class="view-all-btn" data-magnetic>View All Projects →</a>
     </div>
   </section>
 
-  <!-- Achievements Section -->
-  <section id="achievements" class="achievements-section">
-    <div class="achievements-hero">
-      <div class="achievements-hero__inner">
-        <h2 class="achievements-hero__eyebrow">Achievements</h2>
-        <div class="achievements-hero__underline" aria-hidden="true"></div>
-      </div>
+  <!-- ===== HALL OF FAME : Achievements ===== -->
+  <section id="achievements" class="hof-trophies">
+    <div class="hof__header">
+      <p class="hof__kicker"><span></span>Honours &amp; Recognition<span></span></p>
+      <h2 class="hof__title">Achievements</h2>
+      <p class="hof__sub">Six moments worth keeping on the wall. Select any one to view it full size.</p>
     </div>
 
-    <div class="achievements-carousel">
-      <div class="carousel-track-wrapper">
-        <div class="carousel-track">
-          <div class="carousel-slide active">
-            <img src="assets/achievement1.jpg" alt="Achievement 1">
-            <div class="carousel-caption">Speaker at ISTE's Master Students Programm 2025 (MSP) | Talk: "Perfection Paradox"</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/achievement2.jpg" alt="Achievement 2">
-            <div class="carousel-caption">Winner Smart India Hackathon 2025 for the Problem Statement by Ministry of Agricultutre and Farmers Welfare at BPUT, Rourkel, Odisha</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/achievement3.jpg" alt="Achievement 3">
-            <div class="carousel-caption">2nd April 2023 at 17 SSB Banglore, NDA 150</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/achievement4.jpg" alt="Achievement 4">   
-            <div class="carousel-caption">Cycling through the prominent dams of Nashik</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/achievement5.jpg" alt="Achievement 5">   
-            <div class="carousel-caption">As a Branding Chair, Young Indians KKWIEER (Social cause and youth empowerment)</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/achievement6.jpeg" alt="Achievement 6">   
-            <div class="carousel-caption">Felicitation of Hackathon Winners by the Department of Computer Science and Design, KKWIEER</div>
-          </div>
+    <div class="trophy-wall">
+      <figure class="trophy trophy--feature" data-reveal data-trophy-src="assets/achievement2.jpg" data-trophy-caption="Smart India Hackathon 2025">
+        <div class="trophy__media">
+          <img src="assets/achievement2.jpg" alt="Smart India Hackathon 2025" loading="lazy" decoding="async">
+          <span class="trophy__rank" aria-hidden="true">01</span>
+          <span class="trophy__badge trophy__badge--gold">Winner</span>
+          <span class="trophy__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+          </span>
         </div>
-      </div>
-      <div class="carousel-dots">
-        <span class="carousel-dot active" data-slide="0"></span>
-        <span class="carousel-dot" data-slide="1"></span>
-        <span class="carousel-dot" data-slide="2"></span>
-        <span class="carousel-dot" data-slide="3"></span>
-        <span class="carousel-dot" data-slide="4"></span>
-        <span class="carousel-dot" data-slide="5"></span>
-      </div>
+        <figcaption class="trophy__caption">
+          <h4>Smart India Hackathon 2025</h4>
+          <p>National winner for the Ministry of Agriculture &amp; Farmers Welfare problem statement, at BPUT Rourkela, Odisha.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="trophy" data-reveal data-trophy-src="assets/achievement1.jpg" data-trophy-caption="ISTE Master Students Programme">
+        <div class="trophy__media">
+          <img src="assets/achievement1.jpg" alt="ISTE Master Students Programme" loading="lazy" decoding="async">
+          <span class="trophy__rank" aria-hidden="true">02</span>
+          <span class="trophy__badge trophy__badge--gold">Speaker</span>
+          <span class="trophy__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+          </span>
+        </div>
+        <figcaption class="trophy__caption">
+          <h4>ISTE Master Students Programme</h4>
+          <p>Invited speaker at MSP 2025 with a talk titled &ldquo;Perfection Paradox&rdquo;.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="trophy" data-reveal data-trophy-src="assets/achievement6.jpeg" data-trophy-caption="Felicitated by the Department">
+        <div class="trophy__media">
+          <img src="assets/achievement6.jpeg" alt="Felicitated by the Department" loading="lazy" decoding="async">
+          <span class="trophy__rank" aria-hidden="true">03</span>
+          <span class="trophy__badge trophy__badge--silver">Felicitation</span>
+          <span class="trophy__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+          </span>
+        </div>
+        <figcaption class="trophy__caption">
+          <h4>Felicitated by the Department</h4>
+          <p>Recognised as a hackathon winner by the Department of Computer Science &amp; Design, KKWIEER.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="trophy" data-reveal data-trophy-src="assets/achievement3.jpg" data-trophy-caption="SSB Bangalore &mdash; NDA 150">
+        <div class="trophy__media">
+          <img src="assets/achievement3.jpg" alt="SSB Bangalore &mdash; NDA 150" loading="lazy" decoding="async">
+          <span class="trophy__rank" aria-hidden="true">04</span>
+          <span class="trophy__badge trophy__badge--silver">Defence</span>
+          <span class="trophy__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+          </span>
+        </div>
+        <figcaption class="trophy__caption">
+          <h4>SSB Bangalore &mdash; NDA 150</h4>
+          <p>Conference-out at 17 SSB Bangalore, 2 April 2023.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="trophy" data-reveal data-trophy-src="assets/achievement5.jpg" data-trophy-caption="Branding Chair, Young Indians">
+        <div class="trophy__media">
+          <img src="assets/achievement5.jpg" alt="Branding Chair, Young Indians" loading="lazy" decoding="async">
+          <span class="trophy__rank" aria-hidden="true">05</span>
+          <span class="trophy__badge trophy__badge--bronze">Leadership</span>
+          <span class="trophy__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+          </span>
+        </div>
+        <figcaption class="trophy__caption">
+          <h4>Branding Chair, Young Indians</h4>
+          <p>Leading branding for social-cause and youth-empowerment drives at YI KKWIEER.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="trophy" data-reveal data-trophy-src="assets/achievement4.jpg" data-trophy-caption="Dams of Nashik Ride">
+        <div class="trophy__media">
+          <img src="assets/achievement4.jpg" alt="Dams of Nashik Ride" loading="lazy" decoding="async">
+          <span class="trophy__rank" aria-hidden="true">06</span>
+          <span class="trophy__badge trophy__badge--bronze">Endurance</span>
+          <span class="trophy__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+          </span>
+        </div>
+        <figcaption class="trophy__caption">
+          <h4>Dams of Nashik Ride</h4>
+          <p>Long-distance cycling expedition across the prominent dams of Nashik.</p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -647,6 +839,23 @@
 
   <!-- Footer Section -->
   <footer class="site-footer" id="contact">
+    <div class="footer-cta">
+      <div class="footer-cta__text">
+        <p class="footer-cta__kicker">Available for opportunities</p>
+        <h2 class="footer-cta__title">Have something worth building?</h2>
+      </div>
+      <div class="footer-cta__actions">
+        <a href="mailto:adityaahirrao17@gmail.com" class="footer-cta__btn footer-cta__btn--primary" data-magnetic>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+          <span>Email me</span>
+        </a>
+        <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer"  class="footer-cta__btn" data-magnetic>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></svg>
+          <span>Connect on LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
     <div class="footer-container">
       <!-- Brand Section -->
       <div class="footer-brand">
@@ -655,24 +864,24 @@
         
         <!-- Social Icons -->
         <div class="footer-social-icons">
-          <a href="https://www.instagram.com/alpha_maverick45" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          <a href="https://github.com/adityaahirrao17-stack" target="_blank" aria-label="GitHub">
+          <a href="https://github.com/adityaahirrao17-stack" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" aria-label="LeetCode">
+          <a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path></svg>
           </a>
         </div>
         
         <p class="footer-reviews-text">Connect with me</p>
         <div class="footer-review-badges">
-          <a href="assets/CV_Aditya_Ahirrao.pdf" download="Aditya_Ahirrao_Resume.pdf" class="review-badge">Resume</a>
-          <a href="mailto:adityaahirrao@example.com" class="review-badge">Email</a>
+          <a href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf" class="review-badge">Resume</a>
+          <a href="mailto:adityaahirrao17@gmail.com" class="review-badge">Email</a>
         </div>
       </div>
 
@@ -710,7 +919,7 @@
           <li><a href="#skills">App Development</a></li>
           <li><a href="#skills">Graphic Design</a></li>
           <li><a href="#skills">Design Systems</a></li>
-          <li><a href="#contact">Contact Me</a></li>
+          <li><a href="#contact-me">Contact Me</a></li>
         </ul>
       </div>
     </div>
@@ -723,5 +932,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="enhance.js" defer></script>
 </body>
 </html>

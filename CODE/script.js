@@ -9,29 +9,44 @@
 
   if (!introLoader || !introWord) return;
 
+  // Pace: ~2.6s total. The old 5s hold read as "the page is broken".
+  const STEP = 430;
+  const HOLD = greetings.length * STEP;
+
   document.body.classList.add('intro-lock');
 
+  const timers = [];
+  let finished = false;
+
   greetings.forEach((greeting, index) => {
-    setTimeout(() => {
+    timers.push(setTimeout(() => {
       introWord.classList.remove('is-switching');
       introWord.textContent = greeting;
       void introWord.offsetWidth;
       introWord.classList.add('is-switching');
-    }, index * 760);
+    }, index * STEP));
   });
 
-  setTimeout(() => {
+  function finish() {
+    if (finished) return;
+    finished = true;
+    timers.forEach(clearTimeout);
     introLoader.classList.add('is-hidden');
     document.body.classList.remove('intro-lock');
-  }, 5000);
+    setTimeout(() => introLoader.remove(), 800);
+  }
 
-  setTimeout(() => {
-    introLoader.remove();
-  }, 5800);
+  timers.push(setTimeout(finish, HOLD));
+
+  // Any intent to interact skips the rest of the greeting
+  ['click', 'keydown', 'wheel', 'touchstart'].forEach(evt => {
+    window.addEventListener(evt, finish, { once: true, passive: true });
+  });
 })();
 
-// Initialize EmailJS
+// Initialize EmailJS (only present on pages that load the SDK)
 (function() {
+  if (typeof emailjs === 'undefined') return;
   emailjs.init("tNoh2RcQKithv_QJG");
 })();
 
@@ -43,12 +58,28 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeButton = document.querySelector('.menu-close');
   const menuIcon = document.querySelector('.menu-icon');
 
-  document.querySelectorAll('.experience-carousel__track--leadership').forEach(track => {
+  // Duplicate each marquee track's cards so the -50% loop is seamless.
+  // Clones are inert: hidden from assistive tech and not focusable.
+  document.querySelectorAll(
+    '.experience-carousel__track--leadership, .experience-carousel__track--work'
+  ).forEach(track => {
     Array.from(track.children).forEach(card => {
       const clone = card.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a, button, input').forEach(el => {
+        el.setAttribute('tabindex', '-1');
+      });
+      if (clone.tagName === 'A') clone.setAttribute('tabindex', '-1');
       track.appendChild(clone);
     });
+  });
+
+  // Touch users can't hover to pause the marquees — let them press instead
+  document.querySelectorAll('.experience-carousel').forEach(carousel => {
+    carousel.addEventListener('touchstart', () => carousel.classList.add('is-paused'), { passive: true });
+    carousel.addEventListener('touchend', () => {
+      setTimeout(() => carousel.classList.remove('is-paused'), 1200);
+    }, { passive: true });
   });
 
   const openMenu = () => {
@@ -106,30 +137,52 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Achievements Carousel
+  const carouselRoot = document.querySelector('.achievements-carousel');
   const carouselDots = document.querySelectorAll('.carousel-dot');
   const carouselTrack = document.querySelector('.carousel-track');
   const carouselSlides = document.querySelectorAll('.carousel-slide');
+  const carouselCounter = document.getElementById('carouselCurrent');
+  const carouselPrev = document.querySelector('.carousel-nav--prev');
+  const carouselNext = document.querySelector('.carousel-nav--next');
   let currentSlide = 0;
   let autoSlideInterval;
+  let dragOffset = 0;
+
+  function slideMetrics() {
+    const isMobile = window.innerWidth <= 768;
+    return {
+      width: isMobile ? 85 : 70,   // slide width, % of the viewport-ish track
+      gap: isMobile ? 1.5 : 2      // gap expressed in the same units
+    };
+  }
+
+  function positionTrack(index, pixelOffset) {
+    if (!carouselTrack || !carouselSlides.length) return;
+    const { width, gap } = slideMetrics();
+    const centerOffset = (100 - width) / 2;
+    const offset = index * (width + gap);
+    // calc() needs an explicit operator with spaces — " + -45px" is invalid
+    const px = Math.round(pixelOffset || 0);
+    const drag = px === 0 ? '' : (px > 0 ? ` + ${px}px` : ` - ${Math.abs(px)}px`);
+    carouselTrack.style.transform = `translateX(calc(${centerOffset}% - ${offset}%${drag}))`;
+  }
 
   function showSlide(index) {
-    // Update dots
+    if (!carouselSlides.length) return;
+    // wrap around in both directions
+    index = (index + carouselSlides.length) % carouselSlides.length;
+
     carouselDots.forEach(dot => dot.classList.remove('active'));
     if (carouselDots[index]) carouselDots[index].classList.add('active');
-    
-    // Update slide active state
+
     carouselSlides.forEach(slide => slide.classList.remove('active'));
     if (carouselSlides[index]) carouselSlides[index].classList.add('active');
-    
-    // Calculate offset: center the active slide with partial visibility of prev/next
-    if (carouselTrack && carouselSlides.length > 0) {
-      const isMobile = window.innerWidth <= 768;
-      const slideWidth = isMobile ? 85 : 70; // percentage
-      const gapPercent = isMobile ? 1.5 : 2; // accounts for gap
-      const centerOffset = (100 - slideWidth) / 2; // center the slide
-      const offset = index * (slideWidth + gapPercent);
-      carouselTrack.style.transform = `translateX(calc(${centerOffset}% - ${offset}%))`; 
+
+    if (carouselCounter) {
+      carouselCounter.textContent = String(index + 1).padStart(2, '0');
     }
+
+    positionTrack(index, 0);
     currentSlide = index;
   }
 
@@ -138,14 +191,13 @@ document.addEventListener('DOMContentLoaded', function() {
     showSlide(currentSlide);
   });
 
-  function nextSlide() {
-    const next = (currentSlide + 1) % carouselSlides.length;
-    showSlide(next);
-  }
+  function nextSlide() { showSlide(currentSlide + 1); }
+  function prevSlide() { showSlide(currentSlide - 1); }
 
-  // Auto-advance slides every 4 seconds
+  // Auto-advance slides every 5 seconds
   function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 4000);
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextSlide, 5000);
   }
 
   function resetAutoSlide() {
@@ -153,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     startAutoSlide();
   }
 
-  // Click on dots to navigate
   carouselDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
       showSlide(index);
@@ -161,8 +212,96 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Start auto-slide if carousel exists
-  if (carouselSlides.length > 0) {
+  if (carouselPrev) {
+    carouselPrev.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+  }
+  if (carouselNext) {
+    carouselNext.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+  }
+
+  // Click a neighbouring slide to bring it to the front
+  carouselSlides.forEach((slide, index) => {
+    slide.addEventListener('click', () => {
+      if (index !== currentSlide && Math.abs(dragOffset) < 6) {
+        showSlide(index);
+        resetAutoSlide();
+      }
+    });
+  });
+
+  if (carouselRoot && carouselSlides.length) {
+    // Pause while the pointer is over it or it has keyboard focus
+    carouselRoot.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    carouselRoot.addEventListener('mouseleave', startAutoSlide);
+    carouselRoot.addEventListener('focusin', () => clearInterval(autoSlideInterval));
+    carouselRoot.addEventListener('focusout', startAutoSlide);
+
+    // Arrow-key navigation once the carousel is scrolled into view
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+      const rect = carouselRoot.getBoundingClientRect();
+      const mostlyVisible = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
+      if (!mostlyVisible) return;
+
+      if (e.key === 'ArrowLeft') prevSlide(); else nextSlide();
+      resetAutoSlide();
+    });
+
+    // Swipe / drag
+    let startX = 0;
+    let startY = 0;
+    let dragging = false;
+    let locked = false;
+
+    carouselRoot.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      dragging = true;
+      locked = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      dragOffset = 0;
+      clearInterval(autoSlideInterval);
+    });
+
+    carouselRoot.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+
+      // Let vertical scrolling win unless the gesture is clearly horizontal
+      if (!locked) {
+        if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+        if (Math.abs(dy) > Math.abs(dx)) { dragging = false; return; }
+        locked = true;
+        carouselRoot.classList.add('is-dragging');
+      }
+
+      dragOffset = dx;
+      positionTrack(currentSlide, dx * 0.85);
+    }, { passive: true });
+
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      carouselRoot.classList.remove('is-dragging');
+
+      const threshold = Math.min(90, carouselRoot.offsetWidth * 0.12);
+      if (dragOffset > threshold) prevSlide();
+      else if (dragOffset < -threshold) nextSlide();
+      else positionTrack(currentSlide, 0);
+
+      startAutoSlide();
+      setTimeout(() => { dragOffset = 0; }, 50);
+    }
+
+    carouselRoot.addEventListener('pointerup', endDrag);
+    carouselRoot.addEventListener('pointercancel', endDrag);
+    carouselRoot.addEventListener('pointerleave', endDrag);
+
+    showSlide(0);
     startAutoSlide();
   }
 
@@ -274,6 +413,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const messageDisplay = document.getElementById('tictactoe-message');
   const cells = document.querySelectorAll('.tictactoe-cell');
 
+  // The game only exists on the home page
+  if (!startBtn || !messageDisplay || !cells.length) return;
+
   function resetGame() {
     gameBoard = ['', '', '', '', '', '', '', '', ''];
     gameActive = true;
@@ -281,13 +423,24 @@ document.addEventListener('DOMContentLoaded', function() {
     cells.forEach(cell => {
       cell.textContent = '';
       cell.disabled = false;
+      cell.classList.remove('is-win');
+    });
+  }
+
+  function winningLine(player) {
+    return winningConditions.find(condition => {
+      return condition.every(index => gameBoard[index] === player);
     });
   }
 
   function checkWinner(player) {
-    return winningConditions.some(condition => {
-      return condition.every(index => gameBoard[index] === player);
-    });
+    return Boolean(winningLine(player));
+  }
+
+  function highlightWin(player) {
+    const line = winningLine(player);
+    if (!line) return;
+    line.forEach(index => cells[index].classList.add('is-win'));
   }
 
   function isBoardFull() {
@@ -302,6 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (checkWinner(computerPlayer)) {
           cells[i].textContent = computerPlayer;
           messageDisplay.textContent = 'Aditya wins! (O)';
+          highlightWin(computerPlayer);
           gameActive = false;
           return;
         }
@@ -354,6 +508,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (checkWinner(humanPlayer)) {
         messageDisplay.textContent = 'You win! (X)';
+        highlightWin(humanPlayer);
         gameActive = false;
         return;
       }
@@ -370,6 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (checkWinner(computerPlayer)) {
           messageDisplay.textContent = 'Aditya wins! (O)';
+          highlightWin(computerPlayer);
           gameActive = false;
           return;
         }
