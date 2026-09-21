@@ -571,4 +571,84 @@
       else if (e.key === 'ArrowRight') show(index + 1);
     });
   })();
+
+  /* -----------------------------------------------------------------
+     Hero 3D — tilts the hero as one scene, layers sliding past each
+     other at their own depths (see section 23 of enhance.css).
+
+     We only publish three numbers to CSS: pointer offset from centre on
+     each axis, and how engaged the effect is. CSS owns the look; this
+     owns the easing. Targets are chased with a per-frame lerp so the
+     scene trails the pointer slightly instead of snapping to it, and
+     the loop parks itself as soon as it has settled.
+     ----------------------------------------------------------------- */
+  (function hero3d() {
+    var hero = document.querySelector('.circle');
+    // `any-` rather than the shared finePointer check: a touchscreen
+    // laptop reports a coarse *primary* pointer even with a mouse
+    // plugged in, and that machine can still drive the tilt fine.
+    var hasMouse = window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches;
+    if (!hero || !hasMouse || reduceMotion) return;
+
+    var targetX = 0, targetY = 0, targetDepth = 0;
+    var x = 0, y = 0, depth = 0;
+    var raf = null;
+
+    function frame() {
+      // 0.12 is the chase rate: high enough to feel attached to the
+      // pointer, low enough to smooth out jitter.
+      x += (targetX - x) * 0.12;
+      y += (targetY - y) * 0.12;
+      depth += (targetDepth - depth) * 0.12;
+
+      hero.style.setProperty('--hx', x.toFixed(4));
+      hero.style.setProperty('--hy', y.toFixed(4));
+      hero.style.setProperty('--hd', depth.toFixed(4));
+
+      var settled = Math.abs(targetX - x) < 0.001 &&
+                    Math.abs(targetY - y) < 0.001 &&
+                    Math.abs(targetDepth - depth) < 0.001;
+
+      if (settled) {
+        raf = null;
+        // Land exactly on the target so a disengaged hero is truly flat.
+        hero.style.setProperty('--hx', targetX);
+        hero.style.setProperty('--hy', targetY);
+        hero.style.setProperty('--hd', targetDepth);
+      } else {
+        raf = window.requestAnimationFrame(frame);
+      }
+    }
+
+    function run() {
+      if (!raf) raf = window.requestAnimationFrame(frame);
+    }
+
+    function clamp(n) {
+      return Math.max(-1, Math.min(1, n));
+    }
+
+    on(hero, 'pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var r = hero.getBoundingClientRect();
+      targetX = clamp((e.clientX - (r.left + r.width / 2)) / (r.width / 2));
+      targetY = clamp((e.clientY - (r.top + r.height / 2)) / (r.height / 2));
+      targetDepth = 1;
+      run();
+    }, { passive: true });
+
+    function rest() {
+      targetX = 0;
+      targetY = 0;
+      targetDepth = 0;
+      run();
+    }
+
+    on(hero, 'pointerleave', rest);
+    // Scrolling the hero out from under a parked pointer never fires
+    // pointerleave, so flatten the scene once it is off screen.
+    onScroll(function (scrollY) {
+      if (targetDepth && scrollY > hero.offsetHeight) rest();
+    });
+  })();
 })();

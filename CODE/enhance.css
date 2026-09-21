@@ -75,18 +75,10 @@ label:focus-visible,
   border-radius: 6px;
 }
 
-/* Scrollbar */
-@supports selector(::-webkit-scrollbar) {
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #070707; }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(16,255,115,.5), rgba(0,216,255,.35));
-    border-radius: 999px;
-    border: 2px solid #070707;
-  }
-  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #10ff73, #00d8ff); }
-}
-* { scrollbar-color: rgba(16,255,115,.45) #070707; scrollbar-width: thin; }
+/* Scrollbar — hidden; the progress bar at the top shows scroll position.
+   Scrolling by wheel, touch, keyboard and the to-top button is unaffected. */
+html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
 /* Skip link for keyboard / screen reader users */
 .skip-link {
@@ -437,7 +429,9 @@ html.nav-locked body { overflow: hidden; }
   transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .4s ease;
 }
 .skills-glass-card:hover {
-  transform: translateY(-6px);
+  /* The lift is a variable, not a transform, so it can compose with the
+     3D tilt in section 23 rather than overwrite it. */
+  --lift: -6px;
   border-color: rgba(16, 255, 115, 0.34);
   box-shadow:
     0 34px 84px rgba(0, 0, 0, 0.45),
@@ -1198,31 +1192,6 @@ html.nav-locked body { overflow: hidden; }
   isolation: isolate;
 }
 
-.project-card__image::before {
-  counter-increment: projectnum;
-  content: counter(projectnum, decimal-leading-zero);
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 3;
-  padding: 5px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--acc);
-  transition: transform .4s var(--ease), background .4s ease;
-}
-.project-card:hover .project-card__image::before {
-  transform: translateY(-2px);
-  background: rgba(16, 255, 115, 0.18);
-}
-
 .project-card__image::after {
   background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.55) 100%);
   transition: opacity .45s ease;
@@ -1270,7 +1239,6 @@ html.nav-locked body { overflow: hidden; }
   .project-card { border-radius: var(--r-md); }
   .project-card:hover { transform: none; }
   .project-card:active { transform: scale(0.985); }
-  .project-card__image::before { top: 10px; left: 10px; font-size: 10px; }
 }
 
 /* ---------------------------------------------------------------
@@ -2326,4 +2294,99 @@ html.nav-locked body { overflow: hidden; }
   .lightbox__btn--prev { left: 4px; }
   .lightbox__btn--next { right: 4px; }
   .lightbox__btn { background: rgba(0, 0, 0, 0.55); }
+}
+
+/* =====================================================================
+   23. Hero 3D — pointer-driven parallax on the home hero
+
+   The hero is treated as a single 3D scene. `.circle` holds the camera
+   (perspective) and its three children sit at different depths, so
+   tilting the scene slides them past each other: the portrait sits
+   behind the glass, the intro copy floats in front of it, and the
+   skills card sits nearest the viewer.
+
+   Everything keys off three custom properties that enhance.js writes
+   onto `.circle`:
+     --hx, --hy   pointer offset from the hero centre, -1 … 1
+     --hd         engagement: 0 at rest, 1 while the pointer is over it
+
+   At rest --hd is 0, which collapses every transform below to identity.
+   That is deliberate — if enhance.js never runs, or the visitor is on
+   touch or prefers reduced motion, the hero renders exactly as it did
+   before this section existed.
+   ===================================================================== */
+/* Registering --lift lets it animate, so the card's hover lift still
+   eases even though the tilt itself is smoothed in JS and therefore
+   runs without a transform transition. Browsers without @property just
+   snap to the lifted position. */
+@property --lift {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+.circle {
+  --hx: 0;
+  --hy: 0;
+  --hd: 0;
+  perspective: 1200px;
+  perspective-origin: 50% 38%;
+}
+
+/* Back layer: the portrait. It tilts least, and scales up as it recedes
+   so the edges keep covering the full-bleed width while rotated. */
+.circle img {
+  transform:
+    rotateX(calc(var(--hy) * var(--hd) * 1.6deg))
+    rotateY(calc(var(--hx) * var(--hd) * -2deg))
+    translateZ(calc(var(--hd) * -46px))
+    scale(calc(1 + var(--hd) * 0.06));
+  backface-visibility: hidden;
+}
+
+/* Mid layer: the intro copy. */
+.circle-intro-text {
+  transform:
+    rotateX(calc(var(--hy) * var(--hd) * 3.4deg))
+    rotateY(calc(var(--hx) * var(--hd) * -4deg))
+    translate3d(
+      calc(var(--hx) * var(--hd) * 10px),
+      calc(var(--hy) * var(--hd) * 8px),
+      calc(var(--hd) * 44px));
+}
+
+/* Front layer: the skills card. Tilts most and rides closest to the
+   viewer. --lift is the hover lift, kept as a variable so the tilt and
+   the lift can share one transform instead of overwriting each other. */
+.circle .skills-glass-card {
+  transform:
+    rotateX(calc(var(--hy) * var(--hd) * 5.5deg))
+    rotateY(calc(var(--hx) * var(--hd) * -6.5deg))
+    translate3d(
+      calc(var(--hx) * var(--hd) * 16px),
+      calc(var(--hy) * var(--hd) * 12px + var(--lift, 0px)),
+      calc(var(--hd) * 80px));
+  backface-visibility: hidden;
+  /* Drops the transform transition inherited from section 7 — the tilt
+     is already damped frame-by-frame in JS, and transitioning on top of
+     that would make the card lag behind the pointer. */
+  transition: --lift .5s var(--ease), box-shadow .5s var(--ease), border-color .4s ease;
+}
+
+/* Specular highlight that tracks the pointer across the glass — this is
+   what reads as a physical surface catching the light as it turns.
+   No z-index, so it paints over the card's background but under the
+   heading and skills list, both of which sit at z-index 2. */
+.skills-glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: calc(var(--hd) * 0.85);
+  background: radial-gradient(
+    200px circle at calc(50% + var(--hx) * 42%) calc(50% + var(--hy) * 42%),
+    rgba(255, 255, 255, 0.16),
+    rgba(16, 255, 115, 0.05) 45%,
+    transparent 70%);
 }
