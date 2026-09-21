@@ -1,0 +1,22 @@
+# Latest Posts — one post link per line, newest first.
+#
+# Paste the normal share link:
+#   LinkedIn   post → "..." menu → Copy link to post
+#   Instagram  post → "..." menu → Copy link
+#
+# Then, from the CODE folder, run:
+#   node tools/fetch-posts.js
+#
+# Drop anything after "?" when pasting — those are tracking parameters,
+# and the rcm= one identifies your own account.
+#
+# Lines starting with # are ignored.
+
+# ---- LinkedIn ----
+https://www.linkedin.com/posts/aditya-ahirrao-61210721a_csd-kkwieer-engineering-activity-7503018710522216448-5s37
+https://www.linkedin.com/posts/desoc-kkwieer_desoc2026-leadership-csd-ugcPost-7498072475583385600-O6oY
+https://www.linkedin.com/posts/aditya-ahirrao-61210721a_hal-hindustanaeronauticslimited-internship-activity-7485378175900848128-bza_
+https://www.linkedin.com/posts/department-of-computer-science-and-design-k-k-wagh-institute-of-engineering-education-and-research_proudmoment-hacksagon-iiitgwalior-ugcPost-7458825176655327232-2WN6
+
+# ---- Instagram ----
+# Paste your Instagram post links below this line.

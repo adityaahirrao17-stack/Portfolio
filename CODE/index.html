@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=3">
-  <link rel="stylesheet" href="enhance.css?v=4">
+  <link rel="stylesheet" href="enhance.css?v=6">
   <script>
     // Set before first paint so reveal-on-scroll elements never flash in.
     document.documentElement.classList.add('fx');
@@ -57,18 +57,10 @@
 
   <!-- Mobile-only hero summary (hidden on desktop, where the glass cards handle this) -->
   <section class="hero-mobile" aria-label="Introduction">
-    <p class="hero-mobile__kicker">AI Engineer · Full Stack · UI/UX</p>
     <p class="hero-mobile__text">
       Building <strong>RAG applications</strong>, LLM-powered solutions and scalable
       software systems — with an eye for how they look and feel.
     </p>
-    <ul class="hero-mobile__chips" aria-label="Core skills">
-      <li>AI Systems</li>
-      <li>RAG Development</li>
-      <li>Full Stack</li>
-      <li>UI/UX Design</li>
-      <li>Research</li>
-    </ul>
   </section>
 
   <!-- Social Media Links -->
@@ -831,6 +823,64 @@
 
   <div class="experience-divider" aria-hidden="true"></div>
 
+  <!-- ---------- Latest posts : LinkedIn + Instagram rails ----------
+       social.js renders the cards from posts-data.js. To change which
+       posts appear, edit tools/posts.txt and run:
+           node tools/fetch-posts.js -->
+  <section id="posts" class="posts-section" aria-label="Latest posts">
+    <div class="section-head">
+      <h2 class="section-head__title">Latest Posts</h2>
+      <div class="section-head__underline" aria-hidden="true"></div>
+      <p class="section-head__sub">What I have been building, designing and speaking about — straight from my feeds.</p>
+    </div>
+
+    <div class="post-rail" data-platform="linkedin"
+         data-profile="https://www.linkedin.com/in/aditya-ahirrao-61210721a/">
+      <div class="post-rail__head">
+        <span class="post-rail__icon post-rail__icon--linkedin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></svg>
+        </span>
+        <div class="post-rail__id">
+          <h3>LinkedIn</h3>
+          <p>Aditya Ahirrao</p>
+        </div>
+        <a class="post-rail__profile" href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/" target="_blank" rel="noopener noreferrer">View profile</a>
+        <div class="post-rail__navs">
+          <button type="button" class="post-rail__nav post-rail__nav--prev" aria-label="Previous LinkedIn posts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="post-rail__nav post-rail__nav--next" aria-label="More LinkedIn posts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="post-rail__track"></div>
+    </div>
+
+    <div class="post-rail" data-platform="instagram"
+         data-profile="https://www.instagram.com/alpha_maverick45">
+      <div class="post-rail__head">
+        <span class="post-rail__icon post-rail__icon--instagram" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </span>
+        <div class="post-rail__id">
+          <h3>Instagram</h3>
+          <p>@alpha_maverick45</p>
+        </div>
+        <a class="post-rail__profile" href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer">View profile</a>
+        <div class="post-rail__navs">
+          <button type="button" class="post-rail__nav post-rail__nav--prev" aria-label="Previous Instagram posts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="post-rail__nav post-rail__nav--next" aria-label="More Instagram posts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="post-rail__track"></div>
+    </div>
+  </section>
+
   <!-- Footer Section -->
   <footer class="site-footer" id="contact">
     <div class="footer-cta">
@@ -927,5 +977,7 @@
 
   <script src="script.js?v=3"></script>
   <script src="enhance.js?v=3" defer></script>
+  <script src="posts-data.js?v=1"></script>
+  <script src="social.js?v=2" defer></script>
 </body>
 </html>
