@@ -158,45 +158,19 @@
   })();
 
   /* -----------------------------------------------------------------
-     Navbar — sliding highlight, scroll-spy, condensed state, mobile menu
+     Navbar — scroll-spy, scrolled state, mobile menu
      ----------------------------------------------------------------- */
   var bar = $('#topbar');
   var nav = $('.tnav', bar);
-  var ind = $('.tnav__ind', bar);
   var navLinks = $$('a[data-spy]', nav);
   var sheetLinks = $$('#sheet a[data-spy]');
-  var current = navLinks[0];
-  var hovering = false;
-
-  function moveTo(el, instant) {
-    if (!el || !ind || !nav.offsetWidth) return;
-    if (instant) ind.style.transition = 'none';
-    ind.style.setProperty('--x', el.offsetLeft + 'px');
-    ind.style.setProperty('--w', el.offsetWidth + 'px');
-    if (instant) { void ind.offsetWidth; ind.style.transition = ''; }
-  }
 
   function setCurrent(id) {
     navLinks.concat(sheetLinks).forEach(function (a) {
       var on = a.getAttribute('data-spy') === id;
       a.classList.toggle('active', on);
       if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-      if (on && nav.contains(a)) current = a;
     });
-    if (!hovering) moveTo(current);
-  }
-
-  if (nav && ind) {
-    moveTo(current, true);
-    nav.classList.add('has-ind');
-    navLinks.forEach(function (a) {
-      a.addEventListener('pointerenter', function () { hovering = true; moveTo(a); });
-      a.addEventListener('focus', function () { moveTo(a); });
-    });
-    nav.addEventListener('pointerleave', function () { hovering = false; moveTo(current); });
-    nav.addEventListener('focusout', function () { moveTo(current); });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveTo(current, true); });
-    window.addEventListener('resize', function () { moveTo(current, true); });
   }
 
   var spySections = navLinks.map(function (a) { return document.getElementById(a.getAttribute('data-spy')); }).filter(Boolean);
@@ -548,6 +522,107 @@
       track.addEventListener('scroll', function () { requestAnimationFrame(sync); }, { passive: true });
       window.addEventListener('resize', sync);
       sync();
+    });
+  })();
+  /* -----------------------------------------------------------------
+     Ask my portfolio — posts to /api/ask and renders the cited answer.
+     Each answer part may cite source chunks; those become [n] marks
+     that match the numbered source list under the answer.
+     ----------------------------------------------------------------- */
+  (function ask() {
+    var form = $('#askForm');
+    if (!form) return;
+    var input = $('#askInput');
+    var log = $('#askLog');
+    var chips = $$('#askChips button');
+    var history = [];
+    var busy = false;
+
+    function node(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
+    }
+    function setBusy(on) {
+      busy = on;
+      form.querySelector('button').disabled = on;
+      chips.forEach(function (b) { b.disabled = on; });
+    }
+    function scrollDown() { log.scrollTop = log.scrollHeight; }
+
+    function render(li, data) {
+      li.classList.remove('is-wait');
+      li.textContent = '';
+      var used = [];                       // source indexes in order of first citation
+      var plain = '';
+      (data.parts || []).forEach(function (p) {
+        li.appendChild(document.createTextNode(p.text));
+        plain += p.text;
+        (p.cites || []).forEach(function (i) {
+          var n = used.indexOf(i);
+          if (n === -1) { used.push(i); n = used.length - 1; }
+          var sup = node('sup', null, String(n + 1));
+          sup.title = data.sources[i] || '';
+          li.appendChild(sup);
+        });
+      });
+      if (used.length) {
+        var list = node('ul', 'ask__src');
+        list.setAttribute('aria-label', 'Sources');
+        used.forEach(function (i, n) {
+          var item = node('li');
+          item.appendChild(node('b', null, '[' + (n + 1) + ']'));
+          item.appendChild(document.createTextNode(data.sources[i] || ''));
+          list.appendChild(item);
+        });
+        li.appendChild(list);
+      }
+      return plain;
+    }
+
+    function send(question) {
+      question = question.trim();
+      if (!question || busy) return;
+      setBusy(true);
+      log.appendChild(node('li', 'ask__q', question));
+      var answer = node('li', 'ask__a is-wait');
+      log.appendChild(answer);
+      scrollDown();
+
+      fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: question, history: history })
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (data) {
+            if (!r.ok) throw new Error(data.error || 'The assistant could not answer right now.');
+            return data;
+          });
+        })
+        .then(function (data) {
+          var text = render(answer, data);
+          history.push({ role: 'user', content: question }, { role: 'assistant', content: text });
+          history = history.slice(-6);
+        })
+        .catch(function (err) {
+          answer.classList.remove('is-wait');
+          answer.classList.add('is-error');
+          answer.textContent = location.protocol === 'file:'
+            ? 'The assistant runs on the deployed site; it is not available when the page is opened as a local file.'
+            : err.message;
+        })
+        .then(function () { setBusy(false); scrollDown(); });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      send(input.value);
+      input.value = '';
+    });
+    chips.forEach(function (b) {
+      b.addEventListener('click', function () { send(b.textContent); });
     });
   })();
 })();

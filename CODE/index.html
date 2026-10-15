@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=19">
   <link rel="preload" as="image" href="assets/portrait.png">
   <script>
     // Animations only hide content once JS is confirmed running. The intro
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#about">Skip to content</a>
+  <a class="skip-link" href="#experience">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
   <div class="intro" aria-hidden="true">
@@ -59,28 +59,24 @@
 
   <!-- ================= NAVBAR ================= -->
   <header class="topbar" id="topbar">
-    <div class="topbar__glass">
-      <a class="mark" href="#home" aria-label="Aditya Ahirrao — back to top"><span class="mark__sq">AA</span><span class="mark__txt">Aditya Ahirrao</span></a>
+    <div class="topbar__in">
+      <a class="mark" href="#home" aria-label="Aditya Ahirrao — back to top">Aditya Ahirrao</a>
       <nav class="tnav" aria-label="Primary">
-        <span class="tnav__ind" aria-hidden="true"></span>
-        <a href="#home" data-spy="home" class="active" aria-current="true"><i>01</i>Home</a>
-        <a href="#about" data-spy="about"><i>02</i>About</a>
-        <a href="#work" data-spy="work"><i>03</i>Work</a>
-        <a href="#experience" data-spy="experience"><i>04</i>Experience</a>
-        <a href="#contact" data-spy="contact"><i>05</i>Contact</a>
+        <a href="#home" data-spy="home" class="active" aria-current="true">Home</a>
+        <a href="#experience" data-spy="experience">Experience</a>
+        <a href="#about" data-spy="about">About</a>
+        <a href="#work" data-spy="work">Work</a>
+        <a href="#contact" data-spy="contact">Contact</a>
       </nav>
-      <div class="topbar__end">
-        <span class="status"><i aria-hidden="true"></i>Open to internships</span>
-        <a class="tbtn" href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf">R&eacute;sum&eacute;<svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></a>
-      </div>
+      <a class="tbtn" href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf">R&eacute;sum&eacute;<svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span></button>
     </div>
     <div class="sheet" id="sheet">
-      <a href="#home" data-spy="home"><i>01</i>Home</a>
-      <a href="#about" data-spy="about"><i>02</i>About</a>
-      <a href="#work" data-spy="work"><i>03</i>Work</a>
-      <a href="#experience" data-spy="experience"><i>04</i>Experience</a>
-      <a href="#contact" data-spy="contact"><i>05</i>Contact</a>
+      <a href="#home" data-spy="home">Home</a>
+      <a href="#experience" data-spy="experience">Experience</a>
+      <a href="#about" data-spy="about">About</a>
+      <a href="#work" data-spy="work">Work</a>
+      <a href="#contact" data-spy="contact">Contact</a>
       <a class="sheet__cta" href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf">Download r&eacute;sum&eacute;</a>
     </div>
   </header>
@@ -117,7 +113,7 @@
         <p class="hero__bio hero__fade">Computer Science &amp; Design undergraduate building RAG applications, LLM-powered products and the interfaces people use with them.</p>
 
         <div class="hero__cta hero__fade">
-          <a class="btn btn--solid" href="#work" data-magnetic><span>View work</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--solid" href="#experience" data-magnetic><span>View experience</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn--ghost" href="#contact" data-magnetic><span>Get in touch</span></a>
         </div>
 
@@ -128,14 +124,158 @@
         </ul>
       </div>
 
-      <a class="hero__scroll hero__fade" href="#about" aria-label="Scroll to About"><span>Scroll</span><i aria-hidden="true"></i></a>
+      <a class="hero__scroll hero__fade" href="#experience" aria-label="Scroll to Experience"><span>Scroll</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="sec-head">
+          <p class="sec-head__idx reveal"><span>02</span>Experience</p>
+          <h2 class="sec-head__title" id="exp-title" data-split>Roles held, teams led, work&nbsp;shipped.</h2>
+        </header>
+
+        <div class="sub-block sub-block--first">
+          <h3 class="sub-title reveal">Work experience</h3>
+          <ol class="jobs">
+            <li class="job reveal">
+              <div class="job__side"><p class="job__metric"><b>10,000+</b><span>manual pages made searchable in seconds</span></p></div>
+              <div class="job__head">
+                <div><h4>AI &amp; Machine Learning Intern</h4><p class="job__org">Hindustan Aeronautics Ltd &middot; Internship</p></div>
+                <p class="job__when"><span class="job__badge">Latest</span><span>Jun 2026 &mdash; Jul 2026</span><span>Nashik, India</span></p>
+              </div>
+              <div class="job__body">
+                <ul class="points"><li>Engineered a RAG pipeline with semantic search and vector embeddings for 10,000+ pages and 500+ figures of aircraft manuals and accident reports.</li><li>Built retrieval with ChromaDB and Sentence Transformers, reducing document retrieval from minutes to seconds.</li><li>Used Docling for structured extraction from manuals, then deployed local Ollama LLMs for citation-backed responses and analytics.</li></ul>
+                <ul class="tags"><li>RAG</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Docling</li><li>Ollama</li></ul>
+              </div>
+            </li>
+            <li class="job reveal">
+              <div class="job__side"><p class="job__metric"><b>24.4%</b><span>net follower growth in 4 months</span></p></div>
+              <div class="job__head">
+                <div><h4>Digital Marketing &amp; Content Strategist</h4><p class="job__org">WRS Energy Solutions &middot; Contract</p></div>
+                <p class="job__when"><span>Feb 2026 &mdash; Jun 2026</span><span>Remote</span></p>
+              </div>
+              <div class="job__body">
+                <ul class="points"><li>Applied digital marketing and SEO fundamentals to plan audience-focused content aligned with brand messaging.</li><li>Drove 24.4% net growth in targeted Instagram followers across a focused 4-month content strategy period.</li></ul>
+                <ul class="tags"><li>SEO</li><li>Content Strategy</li><li>Analytics</li></ul>
+              </div>
+            </li>
+            <li class="job reveal">
+              <div class="job__side"><p class="job__metric"><b>20+</b><span>high-fidelity screens shipped</span></p></div>
+              <div class="job__head">
+                <div><h4>UI/UX Designer &amp; Researcher</h4><p class="job__org">Runverve | Smart Heal &middot; Sponsored project</p></div>
+                <p class="job__when"><span>Nov 2025 &mdash; Jan 2026</span><span>Remote</span></p>
+              </div>
+              <div class="job__body">
+                <ul class="points"><li>Conducted user research and designed 20+ high-fidelity Figma screens for a sponsored React Native application.</li><li>Integrated third-party RESTful APIs for secure data exchange and real-time content synchronisation.</li></ul>
+                <ul class="tags"><li>Figma</li><li>User Research</li><li>React Native</li><li>REST APIs</li></ul>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="sub-block">
+          <h3 class="sub-title reveal">Leadership roles</h3>
+          <div class="honour reveal">
+            <div class="honour__board">
+              <header class="honour__head">
+                <p class="honour__kicker"><i aria-hidden="true"></i>Leadership &amp; Service<i aria-hidden="true"></i></p>
+                <h4 class="honour__title">Honour Roll</h4>
+              </header>
+              <ol class="honour__list">
+                <li><a class="honour__item" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT" target="_blank" rel="noopener noreferrer">
+                  <span class="honour__logo"><img class="honour__logo--lg" src="assets/desoclogo.png" alt="Design Society logo" loading="lazy"></span>
+                  <div class="honour__org"><h5>Design Society</h5><p>Design club of KKWIEER organising tech and non-tech events</p></div>
+                  <ul class="honour__roles"><li><b>President</b><time>2024 &ndash; Present</time></li><li><b>Vice President</b><time>2023 &ndash; 2024</time></li></ul>
+                </a></li>
+                <li><a class="honour__item" href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA" target="_blank" rel="noopener noreferrer">
+                  <span class="honour__logo"><img src="assets/yilogo.png" alt="Young Indians logo" loading="lazy"></span>
+                  <div class="honour__org"><h5>Young Indians</h5><p>KKWIEER Chapter &mdash; a movement for Indian youth</p></div>
+                  <ul class="honour__roles"><li><b>Chairman &middot; Branding</b><time>2025 &ndash; Present</time></li><li><b>Co-Chair &middot; Road Safety</b><time>2025</time></li></ul>
+                </a></li>
+                <li><a class="honour__item" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC" target="_blank" rel="noopener noreferrer">
+                  <span class="honour__logo"><img src="assets/innoveralogo.png" alt="INNOVERA logo" loading="lazy"></span>
+                  <div class="honour__org"><h5>INNOVERA</h5><p>National-level hackathon with 1,000+ participants</p></div>
+                  <ul class="honour__roles"><li><b>Head of Design &amp; Branding</b><time>2025</time></li></ul>
+                </a></li>
+                <li><div class="honour__item">
+                  <span class="honour__logo"><img src="assets/istelogo.png" alt="ISTE logo" loading="lazy"></span>
+                  <div class="honour__org"><h5>ISTE</h5><p>Indian Society for Technical Education</p></div>
+                  <ul class="honour__roles"><li><b>Core Committee Member</b><time>2025 &ndash; Present</time></li></ul>
+                </div></li>
+                <li><a class="honour__item" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_tedxkkwieer-internationalevent-ideasthatchangetheworld-activity-7306894825503522816-TOxg" target="_blank" rel="noopener noreferrer">
+                  <span class="honour__logo"><img src="assets/tedxlogo-clear.png" alt="TEDxKKWIEER logo" loading="lazy"></span>
+                  <div class="honour__org"><h5>TED<span class="honour__lc">x</span>KKWIEER</h5><p>International event themed &lsquo;Rise Through Resonance&rsquo;</p></div>
+                  <ul class="honour__roles"><li><b>Design Team Member</b><time>2025</time></li></ul>
+                </a></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-block">
+          <h3 class="sub-title reveal">Achievements</h3>
+          <div class="trophies">
+            <figure class="trophy reveal" data-zoom="assets/achievement2.jpg" data-caption="Smart India Hackathon 2025">
+              <div class="trophy__media reveal-img"><img src="assets/achievement2.jpg" alt="Smart India Hackathon 2025" loading="lazy" decoding="async"></div>
+              <figcaption><span>Winner</span><h4>Smart India Hackathon 2025</h4><p>National winner for the Ministry of Agriculture &amp; Farmers Welfare problem statement, at BPUT Rourkela, Odisha.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement1.jpg" data-caption="ISTE Master Students Programme">
+              <div class="trophy__media reveal-img"><img src="assets/achievement1.jpg" alt="ISTE Master Students Programme" loading="lazy" decoding="async"></div>
+              <figcaption><span>Speaker</span><h4>ISTE Master Students Programme</h4><p>Invited speaker at MSP 2025 with a talk titled &ldquo;Perfection Paradox&rdquo;.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement6.jpeg" data-caption="Felicitated by the Department">
+              <div class="trophy__media reveal-img"><img src="assets/achievement6.jpeg" alt="Felicitated by the Department" loading="lazy" decoding="async"></div>
+              <figcaption><span>Felicitation</span><h4>Felicitated by the Department</h4><p>Recognised as a hackathon winner by the Department of Computer Science &amp; Design, KKWIEER.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement3.jpg" data-caption="SSB Bangalore — NDA 150">
+              <div class="trophy__media reveal-img"><img src="assets/achievement3.jpg" alt="SSB Bangalore — NDA 150" loading="lazy" decoding="async"></div>
+              <figcaption><span>Defence</span><h4>SSB Bangalore &mdash; NDA 150</h4><p>Conference-out at 17 SSB Bangalore, 2 April 2023.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement5.jpg" data-caption="Branding Chair, Young Indians">
+              <div class="trophy__media reveal-img"><img src="assets/achievement5.jpg" alt="Branding Chair, Young Indians" loading="lazy" decoding="async"></div>
+              <figcaption><span>Leadership</span><h4>Branding Chair, Young Indians</h4><p>Leading branding for social-cause and youth-empowerment drives at YI KKWIEER.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement4.jpg" data-caption="Dams of Nashik Ride">
+              <div class="trophy__media reveal-img"><img src="assets/achievement4.jpg" alt="Dams of Nashik Ride" loading="lazy" decoding="async"></div>
+              <figcaption><span>Endurance</span><h4>Dams of Nashik Ride</h4><p>Long-distance cycling expedition across the prominent dams of Nashik.</p></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ASK ================= -->
+    <section class="section section--tight ask" id="ask" aria-labelledby="ask-title">
+      <div class="container">
+        <header class="sec-head ask__head">
+          <p class="sec-head__idx reveal"><span>AI</span>Ask my portfolio</p>
+          <h2 class="sec-head__title sec-head__title--sm" id="ask-title" data-split>Ask anything about my&nbsp;work.</h2>
+          <p class="ask__lede reveal">A small RAG pipeline, like the one I built at HAL: your question pulls the most relevant parts of this portfolio, and Claude answers from only those, citing each one.</p>
+        </header>
+
+        <div class="ask__box reveal">
+          <ol class="ask__log" id="askLog" aria-live="polite"></ol>
+          <div class="ask__chips" id="askChips">
+            <button type="button">What did he build at HAL?</button>
+            <button type="button">What leadership roles does he hold?</button>
+            <button type="button">How did he win Smart India Hackathon?</button>
+            <button type="button">Is he a good fit for a UI/UX internship?</button>
+          </div>
+          <form class="ask__form" id="askForm">
+            <label class="sr-only" for="askInput">Your question</label>
+            <input id="askInput" name="question" type="text" maxlength="300" autocomplete="off" placeholder="Ask about experience, projects, skills&hellip;">
+            <button type="submit" aria-label="Ask"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- ================= ABOUT ================= -->
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container">
         <header class="sec-head">
-          <p class="sec-head__idx reveal"><span>02</span>About</p>
+          <p class="sec-head__idx reveal"><span>03</span>About</p>
           <h2 class="sec-head__title" id="about-title" data-split>Designer, engineer, student&nbsp;leader.</h2>
         </header>
 
@@ -206,7 +346,7 @@
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="container">
         <header class="sec-head">
-          <p class="sec-head__idx reveal"><span>03</span>Work</p>
+          <p class="sec-head__idx reveal"><span>04</span>Work</p>
           <h2 class="sec-head__title" id="work-title" data-split>Selected work.</h2>
         </header>
 
@@ -256,112 +396,6 @@
               <ul class="tags"><li>Healthcare</li><li>Notifications</li><li>Mobile App</li></ul>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= EXPERIENCE ================= -->
-    <section class="section" id="experience" aria-labelledby="exp-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-head__idx reveal"><span>04</span>Experience</p>
-          <h2 class="sec-head__title" id="exp-title" data-split>Roles held, teams led, work&nbsp;shipped.</h2>
-        </header>
-
-        <div class="sub-block sub-block--first">
-          <h3 class="sub-title reveal">Work experience</h3>
-          <ol class="rows">
-            <li class="row job reveal">
-              <div class="row__when"><span>Jun 2026 &mdash; Jul 2026</span><span>Nashik, India</span></div>
-              <div><h4>AI &amp; Machine Learning Intern</h4><p class="job__org">Hindustan Aeronautics Ltd &middot; Internship</p></div>
-              <div>
-                <ul class="points"><li>Engineered a RAG pipeline with semantic search and vector embeddings for 10,000+ pages and 500+ figures of aircraft manuals and accident reports.</li><li>Built retrieval with ChromaDB and Sentence Transformers, reducing document retrieval from minutes to seconds.</li><li>Used Docling for structured extraction from manuals, then deployed local Ollama LLMs for citation-backed responses and analytics.</li></ul>
-                <ul class="tags"><li>RAG</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Docling</li><li>Ollama</li></ul>
-              </div>
-            </li>
-            <li class="row job reveal">
-              <div class="row__when"><span>Feb 2026 &mdash; Jun 2026</span><span>Remote</span></div>
-              <div><h4>Digital Marketing &amp; Content Strategist</h4><p class="job__org">WRS Energy Solutions &middot; Contract</p></div>
-              <div>
-                <ul class="points"><li>Applied digital marketing and SEO fundamentals to plan audience-focused content aligned with brand messaging.</li><li>Drove 24.4% net growth in targeted Instagram followers across a focused 4-month content strategy period.</li></ul>
-                <ul class="tags"><li>SEO</li><li>Content Strategy</li><li>Analytics</li></ul>
-              </div>
-            </li>
-            <li class="row job reveal">
-              <div class="row__when"><span>Nov 2025 &mdash; Jan 2026</span><span>Remote</span></div>
-              <div><h4>UI/UX Designer &amp; Researcher</h4><p class="job__org">Runverve | Smart Heal &middot; Sponsored project</p></div>
-              <div>
-                <ul class="points"><li>Conducted user research and designed 20+ high-fidelity Figma screens for a sponsored React Native application.</li><li>Integrated third-party RESTful APIs for secure data exchange and real-time content synchronisation.</li></ul>
-                <ul class="tags"><li>Figma</li><li>User Research</li><li>React Native</li><li>REST APIs</li></ul>
-              </div>
-            </li>
-          </ol>
-        </div>
-
-        <div class="sub-block">
-          <h3 class="sub-title reveal">Leadership</h3>
-          <ul class="rows">
-            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT" target="_blank" rel="noopener noreferrer">
-              <span class="lead__logo"><img src="assets/desoclogo.png" alt="" loading="lazy"></span>
-              <div><h4>Design Society</h4><p>Design club of KKWIEER organising tech and non-tech events</p></div>
-              <ul class="lead__roles"><li><b>President</b><time>2024 &ndash; Present</time></li><li><b>Vice President</b><time>2023 &ndash; 2024</time></li></ul>
-              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
-            </a></li>
-            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA" target="_blank" rel="noopener noreferrer">
-              <span class="lead__logo"><img src="assets/yilogo.png" alt="" loading="lazy"></span>
-              <div><h4>Young Indians</h4><p>KKWIEER Chapter &mdash; a movement for Indian youth</p></div>
-              <ul class="lead__roles"><li><b>Chairman &middot; Branding</b><time>2025 &ndash; Present</time></li><li><b>Co-Chair &middot; Road Safety</b><time>2025</time></li></ul>
-              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
-            </a></li>
-            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC" target="_blank" rel="noopener noreferrer">
-              <span class="lead__logo"><img src="assets/innoveralogo.png" alt="" loading="lazy"></span>
-              <div><h4>INNOVERA</h4><p>National-level hackathon with 1,000+ participants</p></div>
-              <ul class="lead__roles"><li><b>Head of Design &amp; Branding</b><time>2025</time></li></ul>
-              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
-            </a></li>
-            <li class="reveal"><div class="row lead">
-              <span class="lead__logo"><img src="assets/istelogo.png" alt="" loading="lazy"></span>
-              <div><h4>ISTE</h4><p>Indian Society for Technical Education</p></div>
-              <ul class="lead__roles"><li><b>Core Committee Member</b><time>2025 &ndash; Present</time></li></ul>
-              <span class="lead__out" aria-hidden="true"></span>
-            </div></li>
-            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_tedxkkwieer-internationalevent-ideasthatchangetheworld-activity-7306894825503522816-TOxg" target="_blank" rel="noopener noreferrer">
-              <span class="lead__logo"><img src="assets/tedxlogo.png" alt="" loading="lazy"></span>
-              <div><h4>TEDxKKWIEER</h4><p>International event themed &lsquo;Rise Through Resonance&rsquo;</p></div>
-              <ul class="lead__roles"><li><b>Design Team Member</b><time>2025</time></li></ul>
-              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
-            </a></li>
-          </ul>
-        </div>
-
-        <div class="sub-block">
-          <h3 class="sub-title reveal">Achievements</h3>
-          <div class="trophies">
-            <figure class="trophy reveal" data-zoom="assets/achievement2.jpg" data-caption="Smart India Hackathon 2025">
-              <div class="trophy__media reveal-img"><img src="assets/achievement2.jpg" alt="Smart India Hackathon 2025" loading="lazy" decoding="async"></div>
-              <figcaption><span>Winner</span><h4>Smart India Hackathon 2025</h4><p>National winner for the Ministry of Agriculture &amp; Farmers Welfare problem statement, at BPUT Rourkela, Odisha.</p></figcaption>
-            </figure>
-            <figure class="trophy reveal" data-zoom="assets/achievement1.jpg" data-caption="ISTE Master Students Programme">
-              <div class="trophy__media reveal-img"><img src="assets/achievement1.jpg" alt="ISTE Master Students Programme" loading="lazy" decoding="async"></div>
-              <figcaption><span>Speaker</span><h4>ISTE Master Students Programme</h4><p>Invited speaker at MSP 2025 with a talk titled &ldquo;Perfection Paradox&rdquo;.</p></figcaption>
-            </figure>
-            <figure class="trophy reveal" data-zoom="assets/achievement6.jpeg" data-caption="Felicitated by the Department">
-              <div class="trophy__media reveal-img"><img src="assets/achievement6.jpeg" alt="Felicitated by the Department" loading="lazy" decoding="async"></div>
-              <figcaption><span>Felicitation</span><h4>Felicitated by the Department</h4><p>Recognised as a hackathon winner by the Department of Computer Science &amp; Design, KKWIEER.</p></figcaption>
-            </figure>
-            <figure class="trophy reveal" data-zoom="assets/achievement3.jpg" data-caption="SSB Bangalore — NDA 150">
-              <div class="trophy__media reveal-img"><img src="assets/achievement3.jpg" alt="SSB Bangalore — NDA 150" loading="lazy" decoding="async"></div>
-              <figcaption><span>Defence</span><h4>SSB Bangalore &mdash; NDA 150</h4><p>Conference-out at 17 SSB Bangalore, 2 April 2023.</p></figcaption>
-            </figure>
-            <figure class="trophy reveal" data-zoom="assets/achievement5.jpg" data-caption="Branding Chair, Young Indians">
-              <div class="trophy__media reveal-img"><img src="assets/achievement5.jpg" alt="Branding Chair, Young Indians" loading="lazy" decoding="async"></div>
-              <figcaption><span>Leadership</span><h4>Branding Chair, Young Indians</h4><p>Leading branding for social-cause and youth-empowerment drives at YI KKWIEER.</p></figcaption>
-            </figure>
-            <figure class="trophy reveal" data-zoom="assets/achievement4.jpg" data-caption="Dams of Nashik Ride">
-              <div class="trophy__media reveal-img"><img src="assets/achievement4.jpg" alt="Dams of Nashik Ride" loading="lazy" decoding="async"></div>
-              <figcaption><span>Endurance</span><h4>Dams of Nashik Ride</h4><p>Long-distance cycling expedition across the prominent dams of Nashik.</p></figcaption>
-            </figure>
-          </div>
         </div>
       </div>
     </section>
@@ -439,6 +473,6 @@
 
   <script src="posts-data.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-  <script src="app.js?v=6" defer></script>
+  <script src="app.js?v=7" defer></script>
 </body>
 </html>
