@@ -877,6 +877,38 @@ a.honour__item:hover .honour__logo { transform: scale(1.06) rotate(-3deg); }
   border-radius: 18px;
   background: var(--glass);
 }
+.ask__status { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; color: var(--ink-3); font: 500 11px var(--mono); letter-spacing: 0.08em; }
+.ask__status:empty { display: none; }
+.ask__status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
+.ask__status.is-on::before { background: #7bd88f; box-shadow: 0 0 8px #7bd88f; }
+.ask__status.is-waking::before { background: var(--gold-2); animation: caret 1.2s ease-in-out infinite; }
+.ask__status.is-off::before { background: #eaa9a7; }
+.ask__ai {
+  position: relative;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px dashed rgba(var(--gold-rgb), 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ask__ai[hidden] { display: none; }
+.ask__ai button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+  color: var(--on-white);
+  font: 600 12.5px var(--sans);
+  cursor: pointer;
+}
+.ask__ai button:disabled { cursor: default; opacity: 0.85; }
+.ask__ai span { flex: 1; min-width: 200px; color: var(--ink-3); font-size: 12.5px; line-height: 1.5; }
+.ask__ai.is-on { border-style: solid; border-color: rgba(123, 216, 143, 0.35); }
+.ask__ai.is-on button { background: rgba(123, 216, 143, 0.16); color: #a8e6b5; }
+.ask__bar { position: absolute; left: 0; bottom: 0; height: 2px; width: var(--p, 0%); background: var(--gold-2); transition: width 0.3s ease; opacity: 0; }
+.ask__ai.is-loading .ask__bar { opacity: 1; }
+.ask__a.is-snippet { color: var(--ink-2); }
 .ask__log { display: grid; gap: 18px; max-height: 460px; overflow-y: auto; scrollbar-width: thin; }
 .ask__log:not(:empty) { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .ask__q { justify-self: end; max-width: 80%; padding: 10px 16px; border-radius: 16px 16px 4px 16px; background: var(--white); color: var(--on-white); font-size: 15px; }

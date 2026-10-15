@@ -1,0 +1,12 @@
+{
+  "name": "ask-aditya-index",
+  "private": true,
+  "type": "module",
+  "description": "Builds the browser-side vector index for the portfolio's Ask box",
+  "scripts": {
+    "build": "node build-index.mjs"
+  },
+  "devDependencies": {
+    "@huggingface/transformers": "4.3.0"
+  }
+}

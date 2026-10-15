@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="styles.css?v=21">
   <link rel="preload" as="image" href="assets/portrait.png">
   <script>
     // Animations only hide content once JS is confirmed running. The intro
@@ -186,7 +186,7 @@
                 <li><a class="honour__item" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT" target="_blank" rel="noopener noreferrer">
                   <span class="honour__logo"><img class="honour__logo--lg" src="assets/desoclogo.png" alt="Design Society logo" loading="lazy"></span>
                   <div class="honour__org"><h5>Design Society</h5><p>Design club of KKWIEER organising tech and non-tech events</p></div>
-                  <ul class="honour__roles"><li><b>President</b><time>2024 &ndash; Present</time></li><li><b>Vice President</b><time>2023 &ndash; 2024</time></li></ul>
+                  <ul class="honour__roles"><li><b>President</b><time>2025 &ndash; Present</time></li><li><b>Vice President</b><time>2023 &ndash; 2025</time></li></ul>
                 </a></li>
                 <li><a class="honour__item" href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA" target="_blank" rel="noopener noreferrer">
                   <span class="honour__logo"><img src="assets/yilogo.png" alt="Young Indians logo" loading="lazy"></span>
@@ -195,7 +195,7 @@
                 </a></li>
                 <li><a class="honour__item" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC" target="_blank" rel="noopener noreferrer">
                   <span class="honour__logo"><img src="assets/innoveralogo.png" alt="INNOVERA logo" loading="lazy"></span>
-                  <div class="honour__org"><h5>INNOVERA</h5><p>National-level hackathon with 1,000+ participants</p></div>
+                  <div class="honour__org"><h5>INNOVERA</h5><p>National-level hackathon with 1,200+ participants</p></div>
                   <ul class="honour__roles"><li><b>Head of Design &amp; Branding</b><time>2025</time></li></ul>
                 </a></li>
                 <li><div class="honour__item">
@@ -251,10 +251,16 @@
         <header class="sec-head ask__head">
           <p class="sec-head__idx reveal"><span>AI</span>Ask my portfolio</p>
           <h2 class="sec-head__title sec-head__title--sm" id="ask-title" data-split>Ask anything about my&nbsp;work.</h2>
-          <p class="ask__lede reveal">A small RAG pipeline, like the one I built at HAL: your question pulls the most relevant parts of this portfolio, and Claude answers from only those, citing each one.</p>
+          <p class="ask__lede reveal">A small RAG pipeline that runs entirely in your browser: your question is embedded on your device, matched against my r&eacute;sum&eacute; in a vector index, and answered with citations. Turn on AI answers and an open 1.5B model writes the reply, also on your device. No server, no API key.</p>
         </header>
 
         <div class="ask__box reveal">
+          <p class="ask__status" id="askStatus" role="status"></p>
+          <div class="ask__ai" id="askAI" hidden>
+            <button type="button" id="askAIBtn">Turn on AI answers</button>
+            <span id="askAINote"></span>
+            <i class="ask__bar" id="askAIBar" aria-hidden="true"></i>
+          </div>
           <ol class="ask__log" id="askLog" aria-live="polite"></ol>
           <div class="ask__chips" id="askChips">
             <button type="button">What did he build at HAL?</button>
@@ -290,8 +296,8 @@
 
           <ul class="stats">
             <li class="stat reveal"><b data-count="10000" data-suffix="+">10,000+</b><span>Manual pages indexed by the HAL RAG pipeline</span></li>
-            <li class="stat reveal"><b data-count="1000" data-suffix="+">1,000+</b><span>Participants at INNOVERA, branding led end-to-end</span></li>
-            <li class="stat reveal"><b data-count="8.76" data-decimals="2">8.76</b><span>CGPA in B.Tech Computer Science &amp; Design</span></li>
+            <li class="stat reveal"><b data-count="1200" data-suffix="+">1,200+</b><span>Participants at INNOVERA, branding led end-to-end</span></li>
+            <li class="stat reveal"><b data-count="8.5" data-decimals="1">8.5</b><span>CGPA in B.Tech Computer Science &amp; Design</span></li>
             <li class="stat reveal"><b data-count="24.4" data-decimals="1" data-suffix="%">24.4%</b><span>Audience growth driven in a 4-month campaign</span></li>
           </ul>
         </div>
@@ -325,7 +331,7 @@
         <div class="sub-block">
           <h3 class="sub-title reveal">Education</h3>
           <ul class="rows">
-            <li class="row edu reveal"><span class="row__when">2023 &ndash; Present</span><div><h4>B.Tech in Computer Science and Design</h4><p>K K Wagh Institute of Engineering Education &amp; Research</p></div><span class="row__note">CGPA 8.76</span></li>
+            <li class="row edu reveal"><span class="row__when">2023 &ndash; Present</span><div><h4>B.Tech in Computer Science and Design</h4><p>K K Wagh Institute of Engineering Education &amp; Research</p></div><span class="row__note">CGPA 8.5</span></li>
             <li class="row edu reveal"><span class="row__when">2021 &ndash; 2023</span><div><h4>Higher Secondary Education</h4><p>Govt Arts and Science College, Chh. Sambhajinagar</p></div><span class="row__note">State Board</span></li>
             <li class="row edu reveal"><span class="row__when">2021 &ndash; 2023</span><div><h4>UPSC NDA | Military School | Govt of Maharashtra</h4><p>Services Preparatory Institute, Chh. Sambhajinagar</p></div><span class="row__note">SSB &ndash; Conference Out</span></li>
             <li class="row edu reveal"><span class="row__when">2015 &ndash; 2021</span><div><h4>Central Board of Secondary Education</h4><p>PSBA English School, Chh. Sambhajinagar</p></div><span class="row__note">82%</span></li>
@@ -473,6 +479,7 @@
 
   <script src="posts-data.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-  <script src="app.js?v=7" defer></script>
+  <script src="app.js?v=9" defer></script>
+  <script type="module" src="ask.js?v=1"></script>
 </body>
 </html>

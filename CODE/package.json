@@ -1,8 +1,0 @@
-{
-  "name": "aditya-portfolio",
-  "private": true,
-  "description": "Portfolio site with an /api/ask assistant (Vercel function)",
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.134.0"
-  }
-}
