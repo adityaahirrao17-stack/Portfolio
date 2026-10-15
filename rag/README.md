@@ -4,7 +4,7 @@ The "Ask my portfolio" box on the website is a RAG pipeline that runs entirely i
 
 | Piece | Where | What it does |
 |---|---|---|
-| Knowledge | `rag/knowledge/` | Résumé and portfolio facts as Markdown (`## ` sections), plus LinkedIn exports |
+| Knowledge | `rag/knowledge/` | Resume and portfolio facts as Markdown (`## ` sections), plus LinkedIn exports |
 | Index builder | `rag/build-index.mjs` | Embeds every section with all-MiniLM-L6-v2 and writes `CODE/rag/index.json` |
 | Retrieval | `CODE/rag/retrieve.js` | Hybrid search in the browser: vector similarity + BM25 keywords |
 | Answers | `CODE/ask.js`, `CODE/ask-worker.js` | Shows cited passages; with WebGPU, Qwen2.5-1.5B (via WebLLM) writes a cited answer on the visitor's device |

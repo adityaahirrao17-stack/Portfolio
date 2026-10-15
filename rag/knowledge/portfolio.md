@@ -27,4 +27,4 @@ At the Services Preparatory Institute, a Government of Maharashtra military scho
 Medication Reminder: a smart medication reminder app with notifications and tracking. Smart Heal (Runverve): a fitness tracking application with AI-powered insights and recommendations. Dams of Nashik Ride: a long-distance cycling expedition of about 107 km across the prominent dams of Nashik.
 
 ## Contact
-The best way to reach Aditya is the contact form on his portfolio website, email at adityaahirrao17@gmail.com, or LinkedIn. His résumé can be downloaded from the website. He is open to internships in AI engineering, full-stack development and UI/UX design.
+The best way to reach Aditya is the contact form on his portfolio website, email at adityaahirrao17@gmail.com, or LinkedIn. His resume can be downloaded from the website. He is open to internships in AI engineering, full-stack development and UI/UX design.

@@ -2,7 +2,7 @@
    ASK.JS — "Ask my portfolio", a RAG pipeline that runs entirely in the
    visitor's browser. No server, no API key.
 
-   1. Retrieval: rag/index.json holds every résumé/portfolio section with
+   1. Retrieval: rag/index.json holds every resume/portfolio section with
       its all-MiniLM-L6-v2 embedding (built by rag/build-index.mjs). The
       question is embedded in the browser with Transformers.js and matched
       by hybrid search (vectors + BM25, see rag/retrieve.js). Until the
@@ -67,16 +67,16 @@ function init() {
     chips.forEach((b) => { b.disabled = on; });
   }
 
-  setStatus('waking', 'Loading my résumé index…');
+  setStatus('waking', 'Loading my resume index…');
   const ready = fetch(new URL('rag/index.json', import.meta.url))
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((index) => {
       retrieve = createRetriever(index);
-      setStatus('on', 'Answers come from my résumé, matched in your browser');
+      setStatus('on', 'Answers come from my resume, matched in your browser');
       loadEmbedder(index);
       return index;
     })
-    .catch(() => setStatus('off', 'The résumé index could not be loaded'));
+    .catch(() => setStatus('off', 'The resume index could not be loaded'));
 
   // The embedding model (~23 MB) loads in the background; questions asked
   // before it is ready use keyword search instead of waiting for it.
@@ -167,7 +167,7 @@ function init() {
   // Without a model: quote the most relevant sentences of the top passages.
   function snippetAnswer(question, passages) {
     if (!passages.length) {
-      return "I couldn't find that in my résumé or portfolio. Try asking about Aditya's experience, projects, skills or leadership, or use the contact form below.";
+      return "I couldn't find that in my resume or portfolio. Try asking about Aditya's experience, projects, skills or leadership, or use the contact form below.";
     }
     const want = new Set(tokens(question));
     return passages.slice(0, 2).map((p, i) => {
