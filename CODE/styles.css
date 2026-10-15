@@ -969,6 +969,62 @@ a.honour__item:hover .honour__logo { transform: scale(1.06) rotate(-3deg); }
 .ask__form button:disabled,
 .ask__chips button:disabled { opacity: 0.45; cursor: wait; }
 
+/* ---- pixel critters living on top of the boxes (critters.js) ---- */
+.critter {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 600;              /* above the boxes, under the navbar and lightbox */
+  width: 48px; height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: grab;
+  touch-action: none;        /* lets touch drag the critter instead of scrolling */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  animation: critterIn 0.6s var(--ease) both;
+}
+@keyframes critterIn { from { opacity: 0; } }
+.critter canvas { display: block; width: 48px; height: 40px; image-rendering: pixelated; }
+.critter.is-held { z-index: 790; cursor: grabbing; }
+.critter:focus-visible { outline: none; }
+.critter__say {
+  position: absolute;
+  bottom: calc(100% - 10px);
+  left: 50%;
+  padding: 3px 7px 4px;
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--on-white);
+  font: 600 10px var(--mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 6px) scale(0.7);
+  transition: opacity 0.2s ease, transform 0.35s var(--ease);
+}
+.critter__say::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  margin-left: -3px;
+  border: 3px solid transparent;
+  border-top-color: var(--white);
+}
+.critter__say.is-on { opacity: 1; transform: translate(-50%, 0) scale(1); }
+.bears {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 600;
+  pointer-events: none;      /* clicks are matched to the bears in critters.js */
+  image-rendering: pixelated;
+  animation: critterIn 0.6s var(--ease) both;
+}
+html.over-bear, html.over-bear * { cursor: pointer !important; }
+/* clear lane above the honour roll so the bears don't walk over its label */
+.sub-title:has(+ .honour) { margin-bottom: 56px; }
+
 /* ---- marquee ---- */
 .marquee {
   overflow: hidden;
