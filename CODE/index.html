@@ -3,981 +3,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#0a0a0b">
+  <title>Aditya Ahirrao — AI Engineer &amp; UI/UX Designer</title>
   <meta name="description" content="Aditya Ahirrao — AI systems and full-stack engineer, UI/UX designer. Smart India Hackathon 2025 winner, AI/ML intern at HAL, building RAG pipelines, LLM-powered products and scalable software.">
   <meta name="author" content="Aditya Ahirrao">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Aditya Ahirrao — AI Engineer & UI/UX Designer">
+  <meta property="og:title" content="Aditya Ahirrao — AI Engineer &amp; UI/UX Designer">
   <meta property="og:description" content="RAG pipelines, LLM-powered products, full-stack engineering and interface design.">
-  <meta property="og:image" content="assets/Group 17.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <title>Aditya Ahirrao — AI Engineer & UI/UX Designer</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>/></text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27white%27/><text x=%2750%27 y=%2767%27 font-size=%2746%27 font-family=%27monospace%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%230a0a0b%27>AA</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
-  <link rel="stylesheet" href="enhance.css?v=6">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="preload" as="image" href="assets/portrait.png">
   <script>
-    // Set before first paint so reveal-on-scroll elements never flash in.
-    document.documentElement.classList.add('fx');
-    // Safety net: if enhance.js never runs, un-hide everything.
-    setTimeout(function () {
-      if (!window.__fxReady) document.documentElement.classList.remove('fx');
-    }, 2500);
+    // Animations only hide content once JS is confirmed running. The intro
+    // plays once per visit and never for reduced-motion users. If app.js
+    // fails to start, the timeout puts everything back on screen.
+    (function () {
+      var h = document.documentElement;
+      h.classList.add('js');
+      var seen = false;
+      try { seen = sessionStorage.getItem('introSeen') === '1'; } catch (e) {}
+      var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!seen && !calm) h.classList.add('has-intro');
+      setTimeout(function () {
+        if (!window.__ready) { h.classList.remove('js', 'has-intro'); }
+      }, 3000);
+    })();
   </script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
-  <div class="intro-loader" id="introLoader" aria-live="polite" aria-label="Welcome animation">
-    <div class="intro-loader__word" id="introLoaderWord">Hello</div>
+  <a class="skip-link" href="#about">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="intro" aria-hidden="true">
+    <div class="intro__inner">
+      <span class="intro__name">Aditya Ahirrao</span>
+      <span class="intro__num"><span id="introNum">0</span><small>%</small></span>
+    </div>
+    <div class="intro__bar"><i id="introBar"></i></div>
   </div>
 
-  <!-- Images -->
-  <div class="circle" id="home">
-    <div class="skills-glass-card">
-      <div class="skills-card-header">
-        <h2>Skills</h2>
-        <span class="skills-card-underline" aria-hidden="true"></span>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></g></symbol>
+    <symbol id="i-leetcode" viewBox="0 0 24 24"><path fill="currentColor" d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" d="M3 12h17M14 6l6 6-6 6"/></symbol>
+    <symbol id="i-out" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" d="M7 17 17 7M9 7h8v8"/></symbol>
+  </defs></svg>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="topbar" id="topbar">
+    <div class="topbar__glass">
+      <a class="mark" href="#home" aria-label="Aditya Ahirrao — back to top"><span class="mark__sq">AA</span><span class="mark__txt">Aditya Ahirrao</span></a>
+      <nav class="tnav" aria-label="Primary">
+        <span class="tnav__ind" aria-hidden="true"></span>
+        <a href="#home" data-spy="home" class="active" aria-current="true"><i>01</i>Home</a>
+        <a href="#about" data-spy="about"><i>02</i>About</a>
+        <a href="#work" data-spy="work"><i>03</i>Work</a>
+        <a href="#experience" data-spy="experience"><i>04</i>Experience</a>
+        <a href="#contact" data-spy="contact"><i>05</i>Contact</a>
+      </nav>
+      <div class="topbar__end">
+        <span class="status"><i aria-hidden="true"></i>Open to internships</span>
+        <a class="tbtn" href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf">R&eacute;sum&eacute;<svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></a>
       </div>
-      <ul class="skills-list" aria-label="Core skills">
-        <li>AI Systems</li>
-        <li>RAG Development</li>
-        <li>Full Stack Engineering</li>
-        <li>UI/UX Design</li>
-        <li>Research &amp; Innovation</li>
-      </ul>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span></button>
     </div>
-    <div class="circle-intro-text">
-      <p>Hi, I'm <strong>Aditya</strong>, a UI/UX designer and Computer Science undergrad specializing in AI systems, backend engineering, and full-stack development. I have been building RAG applications, LLM-powered solutions, and scalable software systems</p>
+    <div class="sheet" id="sheet">
+      <a href="#home" data-spy="home"><i>01</i>Home</a>
+      <a href="#about" data-spy="about"><i>02</i>About</a>
+      <a href="#work" data-spy="work"><i>03</i>Work</a>
+      <a href="#experience" data-spy="experience"><i>04</i>Experience</a>
+      <a href="#contact" data-spy="contact"><i>05</i>Contact</a>
+      <a class="sheet__cta" href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf">Download r&eacute;sum&eacute;</a>
     </div>
-    <img src="assets/Group 17.png" alt="Circle background" fetchpriority="high">
-  </div>
+  </header>
 
-  <!-- Mobile-only hero summary (hidden on desktop, where the glass cards handle this) -->
-  <section class="hero-mobile" aria-label="Introduction">
-    <p class="hero-mobile__text">
-      Building <strong>RAG applications</strong>, LLM-powered solutions and scalable
-      software systems — with an eye for how they look and feel.
-    </p>
-  </section>
+  <main id="main">
 
-  <!-- Social Media Links -->
-  <section class="social-section">
-    <div class="social-container">
-      <a href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
-      </a>
-      <a href="https://github.com/adityaahirrao17-stack" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-        </svg>
-      </a>
-      <a href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf" class="resume-download-btn" data-magnetic aria-label="Download Resume">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span>Resume</span>
-      </a>
-      <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-          <rect x="2" y="9" width="4" height="12"></rect>
-          <circle cx="4" cy="4" r="2"></circle>
-        </svg>
-      </a>
-      <a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LeetCode">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path>
-        </svg>
-      </a>
-    </div>
-  </section>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="hero__bg" aria-hidden="true"></div>
 
-  <!-- Crafting Section -->
-  <section class="crafting-section">
-    <div class="crafting-line"></div>
-    <h2 class="crafting-title">It's Me,</h2>
-    <p class="crafting-desc">Hello, I am Aditya Ahirrao, a UI/UX Desginer, an alumnus of the Services Preparatory Institute (SPI), Computer Science and Design undergraduate specializing in AI systems, backend engineering, and full-stack application development. Experienced in building Retrieval-Augmented Generation (RAG) applications, LLM-powered solutions, and scalable software systems. Smart India Hackathon 2025 Winner, AI-ML Intern at Hindustan Aeronautics Limited (HAL), and proven student leader with experience delivering high-impact technical projects and initiatives</p>
-  </section>
-
-  <!-- Stats Band -->
-  <section class="stats-band" aria-label="Key numbers">
-    <div class="stats-band__inner">
-      <div class="stat-chip">
-        <div class="stat-chip__num" data-count="10000" data-suffix="+">0</div>
-        <div class="stat-chip__label">Manual pages indexed<br>by the HAL RAG pipeline</div>
-      </div>
-      <div class="stat-chip">
-        <div class="stat-chip__num" data-count="1000" data-suffix="+">0</div>
-        <div class="stat-chip__label">Participants at INNOVERA,<br>branding led end-to-end</div>
-      </div>
-      <div class="stat-chip">
-        <div class="stat-chip__num" data-count="8.76" data-decimals="2">0</div>
-        <div class="stat-chip__label">CGPA in B.Tech<br>Computer Science &amp; Design</div>
-      </div>
-      <div class="stat-chip">
-        <div class="stat-chip__num" data-count="24.4" data-decimals="1" data-suffix="%">0</div>
-        <div class="stat-chip__label">Audience growth driven<br>in a 4-month campaign</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills &amp; Stack -->
-  <section class="stack-section" id="skills">
-    <div class="section-head">
-      <h2 class="section-head__title">Skills &amp; Stack</h2>
-      <div class="section-head__underline" aria-hidden="true"></div>
-      <p class="section-head__sub">The toolkit I reach for when turning an idea into something people can actually use.</p>
-    </div>
-
-    <div class="stack-grid">
-      <article class="stack-card" data-reveal>
-        <div class="stack-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
-            <rect x="9" y="9" width="6" height="6" rx="1"></rect>
-            <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"></path>
-          </svg>
+      <figure class="hero__portrait" aria-hidden="false">
+        <div class="hero__portrait-in">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <img src="assets/portrait.png" alt="Portrait of Aditya Ahirrao" width="1258" height="1300" fetchpriority="high" decoding="async">
         </div>
-        <h3>AI &amp; Machine Learning</h3>
-        <p>Retrieval pipelines that answer with citations, not guesses.</p>
-        <ul class="stack-card__tags">
-          <li>RAG</li><li>LangChain</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Ollama</li><li>Docling</li>
-        </ul>
-      </article>
+      </figure>
 
-      <article class="stack-card" data-reveal>
-        <div class="stack-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
-            <path d="M4 5v7c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path>
-            <path d="M4 12v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"></path>
-          </svg>
+      <div class="container hero__copy">
+        <p class="hero__eyebrow">
+          <span class="hero__dash" aria-hidden="true"></span>
+          <span class="ticker" aria-label="AI Engineer, UI/UX Designer, Full-stack Developer, Student Leader">
+            <span class="ticker__item is-on" aria-hidden="true">AI Engineer</span>
+            <span class="ticker__item" aria-hidden="true">UI/UX Designer</span>
+            <span class="ticker__item" aria-hidden="true">Full-stack Developer</span>
+            <span class="ticker__item" aria-hidden="true">Student Leader</span>
+          </span>
+        </p>
+
+        <h1 class="hero__name" aria-label="Aditya Ahirrao">
+          <span class="hero__line" aria-hidden="true"><span class="hero__line-in" data-chars>Aditya</span></span>
+          <span class="hero__line" aria-hidden="true"><span class="hero__line-in" data-chars>Ahirrao</span></span>
+        </h1>
+
+        <p class="hero__bio hero__fade">Computer Science &amp; Design undergraduate building RAG applications, LLM-powered products and the interfaces people use with them.</p>
+
+        <div class="hero__cta hero__fade">
+          <a class="btn btn--solid" href="#work" data-magnetic><span>View work</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="#contact" data-magnetic><span>Get in touch</span></a>
         </div>
-        <h3>Backend &amp; Data</h3>
-        <p>APIs and data layers built to stay fast as they grow.</p>
-        <ul class="stack-card__tags">
-          <li>Python</li><li>FastAPI</li><li>Node.js</li><li>REST</li><li>MongoDB</li><li>SQL</li>
-        </ul>
-      </article>
 
-      <article class="stack-card" data-reveal>
-        <div class="stack-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-            <path d="M8 21h8M12 17v4"></path>
-          </svg>
+        <ul class="hero__meta hero__fade" aria-label="Highlights">
+          <li><b>SIH 2025</b><span>National winner</span></li>
+          <li><b>HAL</b><span>AI/ML intern</span></li>
+          <li><b>DeSoc</b><span>President</span></li>
+        </ul>
+      </div>
+
+      <a class="hero__scroll hero__fade" href="#about" aria-label="Scroll to About"><span>Scroll</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="sec-head">
+          <p class="sec-head__idx reveal"><span>02</span>About</p>
+          <h2 class="sec-head__title" id="about-title" data-split>Designer, engineer, student&nbsp;leader.</h2>
+        </header>
+
+        <p class="statement" data-words>I design and build AI products end to end &mdash; from the retrieval pipelines underneath to the interfaces people actually use.</p>
+
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p>Hello, I am <strong>Aditya Ahirrao</strong>, a UI/UX designer and an alumnus of the Services Preparatory Institute (SPI), now a Computer Science and Design undergraduate specialising in AI systems, backend engineering and full-stack application development.</p>
+            <p>I build Retrieval-Augmented Generation (RAG) applications, LLM-powered solutions and scalable software systems. <strong>Smart India Hackathon 2025 winner</strong>, AI/ML intern at Hindustan Aeronautics Limited (HAL), and a student leader with a record of delivering high-impact technical projects and initiatives.</p>
+            <a class="link-arrow" href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf"><span>Download r&eacute;sum&eacute;</span><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></a>
+          </div>
+
+          <ul class="stats">
+            <li class="stat reveal"><b data-count="10000" data-suffix="+">10,000+</b><span>Manual pages indexed by the HAL RAG pipeline</span></li>
+            <li class="stat reveal"><b data-count="1000" data-suffix="+">1,000+</b><span>Participants at INNOVERA, branding led end-to-end</span></li>
+            <li class="stat reveal"><b data-count="8.76" data-decimals="2">8.76</b><span>CGPA in B.Tech Computer Science &amp; Design</span></li>
+            <li class="stat reveal"><b data-count="24.4" data-decimals="1" data-suffix="%">24.4%</b><span>Audience growth driven in a 4-month campaign</span></li>
+          </ul>
         </div>
-        <h3>Frontend &amp; Mobile</h3>
-        <p>Interfaces that feel considered on a 6-inch screen and a 27-inch one.</p>
-        <ul class="stack-card__tags">
-          <li>React</li><li>React Native</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Responsive UI</li>
-        </ul>
-      </article>
 
-      <article class="stack-card" data-reveal>
-        <div class="stack-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="13.5" cy="6.5" r="2.5"></circle>
-            <circle cx="17.5" cy="13.5" r="2.5"></circle>
-            <circle cx="8.5" cy="7.5" r="2.5"></circle>
-            <circle cx="6.5" cy="14.5" r="2.5"></circle>
-            <path d="M12 22a10 10 0 1 1 0-20"></path>
-          </svg>
+        <div class="sub-block">
+          <h3 class="sub-title reveal">Skills &amp; stack</h3>
+          <ul class="rows">
+            <li class="row skill reveal">
+              <span class="row__no">01</span>
+              <h4>AI &amp; Machine Learning</h4>
+              <div><p>Retrieval pipelines that answer with citations, not guesses.</p><ul class="tags"><li>RAG</li><li>LangChain</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Ollama</li><li>Docling</li></ul></div>
+            </li>
+            <li class="row skill reveal">
+              <span class="row__no">02</span>
+              <h4>Backend &amp; Data</h4>
+              <div><p>APIs and data layers built to stay fast as they grow.</p><ul class="tags"><li>Python</li><li>FastAPI</li><li>Node.js</li><li>REST</li><li>MongoDB</li><li>SQL</li></ul></div>
+            </li>
+            <li class="row skill reveal">
+              <span class="row__no">03</span>
+              <h4>Frontend &amp; Mobile</h4>
+              <div><p>Interfaces that feel considered on a 6-inch screen and a 27-inch one.</p><ul class="tags"><li>React</li><li>React Native</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Responsive UI</li></ul></div>
+            </li>
+            <li class="row skill reveal">
+              <span class="row__no">04</span>
+              <h4>Design &amp; Research</h4>
+              <div><p>User research first, then pixels &mdash; 20+ high-fidelity screens shipped.</p><ul class="tags"><li>Figma</li><li>Design Systems</li><li>Prototyping</li><li>User Research</li><li>Branding</li></ul></div>
+            </li>
+          </ul>
         </div>
-        <h3>Design &amp; Research</h3>
-        <p>User research first, then pixels — 20+ high-fidelity screens shipped.</p>
-        <ul class="stack-card__tags">
-          <li>Figma</li><li>Design Systems</li><li>Prototyping</li><li>User Research</li><li>Branding</li>
-        </ul>
-      </article>
-    </div>
 
-    <div class="stack-marquee" aria-hidden="true">
-      <div class="stack-marquee__track">
-        <span>Python</span><span>·</span><span>RAG</span><span>·</span><span>LLMs</span><span>·</span><span>ChromaDB</span><span>·</span><span>FastAPI</span><span>·</span><span>React</span><span>·</span><span>React Native</span><span>·</span><span>Figma</span><span>·</span><span>Node.js</span><span>·</span><span>MongoDB</span><span>·</span><span>Ollama</span><span>·</span><span>Design Systems</span><span>·</span>
-        <span>Python</span><span>·</span><span>RAG</span><span>·</span><span>LLMs</span><span>·</span><span>ChromaDB</span><span>·</span><span>FastAPI</span><span>·</span><span>React</span><span>·</span><span>React Native</span><span>·</span><span>Figma</span><span>·</span><span>Node.js</span><span>·</span><span>MongoDB</span><span>·</span><span>Ollama</span><span>·</span><span>Design Systems</span><span>·</span>
+        <div class="sub-block">
+          <h3 class="sub-title reveal">Education</h3>
+          <ul class="rows">
+            <li class="row edu reveal"><span class="row__when">2023 &ndash; Present</span><div><h4>B.Tech in Computer Science and Design</h4><p>K K Wagh Institute of Engineering Education &amp; Research</p></div><span class="row__note">CGPA 8.76</span></li>
+            <li class="row edu reveal"><span class="row__when">2021 &ndash; 2023</span><div><h4>Higher Secondary Education</h4><p>Govt Arts and Science College, Chh. Sambhajinagar</p></div><span class="row__note">State Board</span></li>
+            <li class="row edu reveal"><span class="row__when">2021 &ndash; 2023</span><div><h4>UPSC NDA | Military School | Govt of Maharashtra</h4><p>Services Preparatory Institute, Chh. Sambhajinagar</p></div><span class="row__note">SSB &ndash; Conference Out</span></li>
+            <li class="row edu reveal"><span class="row__when">2015 &ndash; 2021</span><div><h4>Central Board of Secondary Education</h4><p>PSBA English School, Chh. Sambhajinagar</p></div><span class="row__note">82%</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- skills ticker -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Retrieval-Augmented Generation</span><i></i><span>LangChain</span><i></i><span>ChromaDB</span><i></i><span>FastAPI</span><i></i><span>React Native</span><i></i><span>Figma</span><i></i><span>Design Systems</span><i></i><span>Ollama</span><i></i>
+        <span>Retrieval-Augmented Generation</span><i></i><span>LangChain</span><i></i><span>ChromaDB</span><i></i><span>FastAPI</span><i></i><span>React Native</span><i></i><span>Figma</span><i></i><span>Design Systems</span><i></i><span>Ollama</span><i></i>
       </div>
     </div>
-  </section>
 
-  <!-- Fixed Navbar -->
-  <input type="checkbox" id="menu-toggle">
-  <label for="menu-toggle" class="menu-icon">&#9776;</label>
-  
-  <nav class="glass-navbar" aria-label="Primary">
-    <label for="menu-toggle" class="menu-close" aria-label="Close menu">&times;</label>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact-me">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- ================= WORK ================= -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="sec-head">
+          <p class="sec-head__idx reveal"><span>03</span>Work</p>
+          <h2 class="sec-head__title" id="work-title" data-split>Selected work.</h2>
+        </header>
 
-  <!-- Liquid Glass SVG Filters -->
-  <svg class="liquid-glass-svg" xmlns="http://www.w3.org/2000/svg" width="0" height="0">
-    <defs>
-      
-      <!-- ============================================= -->
-      <!-- LIQUID GLASS FILTER - MAXIMUM DISTORTION -->
-      <!-- ============================================= -->
-      <filter id="liquidGlassNavbar" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
-        
-        <!-- Step 1: Maximum blur for extreme frosted glass -->
-        <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blurred" />
-        
-        <!-- Step 2: Create displacement noise for extreme refraction -->
-        <feTurbulence 
-          type="fractalNoise" 
-          baseFrequency="0.003" 
-          numOctaves="6" 
-          seed="10"
-          result="noise" 
-        />
-        
-        <!-- Step 3: Apply MAXIMUM refraction -->
-        <feDisplacementMap 
-          in="blurred" 
-          in2="noise" 
-          scale="80" 
-          xChannelSelector="R" 
-          yChannelSelector="G" 
-          result="refracted" 
-        />
-        
-        <!-- Step 4: Color adjustment - subtle enhancement -->
-        <feColorMatrix 
-          in="refracted" 
-          type="matrix" 
-          values="1.05 0    0    0  0
-                  0    1.05 0    0  0
-                  0    0    1.1  0  0
-                  0    0    0    1  0"
-          result="enhanced" 
-        />
-        
-        <!-- Step 5: Specular highlight from top-left -->
-        <feSpecularLighting 
-          in="blurred" 
-          surfaceScale="1.5" 
-          specularConstant="0.4" 
-          specularExponent="40" 
-          lighting-color="#ffffff"
-          result="specular"
-        >
-          <fePointLight x="400" y="-50" z="200" />
-        </feSpecularLighting>
-        
-        <!-- Step 6: Soften specular -->
-        <feGaussianBlur in="specular" stdDeviation="2" result="specular_soft" />
-        
-        <!-- Step 7: Blend specular with enhanced image -->
-        <feComposite 
-          in="specular_soft" 
-          in2="enhanced" 
-          operator="arithmetic" 
-          k1="0" k2="1" k3="0.1" k4="0"
-          result="lit" 
-        />
-        
-      </filter>
-      
-    </defs>
-  </svg>
-
-  <!-- Work Experience Header -->
-  <!-- Work Experience Section with Two Columns -->
-  <section class="hof" id="experience">
-    <div class="hof__header">
-      <p class="hof__kicker"><span></span>Hall of Fame<span></span></p>
-      <h2 class="hof__title">Where I've Made My Mark</h2>
-      <p class="hof__sub">Roles held, teams led and work shipped &mdash; the record so far.</p>
-    </div>
-
-    <!-- ---------- Work Experience : vertical timeline ---------- -->
-    <div class="hof-block">
-      <h3 class="hof-block__title">
-        <span class="hof-block__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-        </span>
-        <span>Work Experience</span>
-        <span class="hof-block__rule" aria-hidden="true"></span>
-        <span class="hof-block__count">03</span>
-      </h3>
-
-      <ol class="xp-rail">
-        <li class="xp-entry" data-reveal>
-          <div class="xp-entry__marker" aria-hidden="true"><span>01</span></div>
-          <article class="xp-card">
-            <header class="xp-card__head">
-              <div class="xp-card__titles">
-                <h4>AI &amp; Machine Learning Intern</h4>
-                <p class="xp-card__org">Hindustan Aeronautics Ltd <span class="xp-card__pill">Internship</span></p>
-              </div>
-              <div class="xp-card__meta">
-                <span class="xp-card__date">Jun 2026 &mdash; Jul 2026</span>
-                <span class="xp-card__place">Nashik, India</span>
-              </div>
-            </header>
-            <ul class="xp-card__points">
-            <li>Engineered a RAG pipeline with semantic search and vector embeddings for 10,000+ pages and 500+ figures of aircraft manuals and accident reports.</li>
-            <li>Built retrieval with ChromaDB and Sentence Transformers, reducing document retrieval from minutes to seconds.</li>
-            <li>Used Docling for structured extraction from manuals, then deployed local Ollama LLMs for citation-backed responses and analytics.</li>
-            </ul>
-            <ul class="xp-card__stack" aria-label="Tools used"><li>RAG</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Docling</li><li>Ollama</li></ul>
+        <div class="projects">
+          <article class="project">
+            <div class="project__media reveal-img"><img src="assets/swasthyam.jpg" alt="SWASTHYAM app screens" loading="lazy" decoding="async"></div>
+            <div class="project__body reveal">
+              <span class="project__no">01 / Healthcare</span>
+              <h3>SWASTHYAM</h3>
+              <p>AI-powered healthcare management system and a national campaign for the Ministry of Agriculture and Farmers Welfare, Govt of India, aimed at reducing edible oil consumption.</p>
+              <ul class="tags"><li>Healthcare</li><li>UI/UX</li><li>Mobile App Development</li></ul>
+            </div>
           </article>
-        </li>
-
-        <li class="xp-entry" data-reveal>
-          <div class="xp-entry__marker" aria-hidden="true"><span>02</span></div>
-          <article class="xp-card">
-            <header class="xp-card__head">
-              <div class="xp-card__titles">
-                <h4>Digital Marketing &amp; Content Strategist</h4>
-                <p class="xp-card__org">WRS Energy Solutions <span class="xp-card__pill">Contract</span></p>
-              </div>
-              <div class="xp-card__meta">
-                <span class="xp-card__date">Feb 2026 &mdash; Jun 2026</span>
-                <span class="xp-card__place">Remote</span>
-              </div>
-            </header>
-            <ul class="xp-card__points">
-            <li>Applied digital marketing and SEO fundamentals to plan audience-focused content aligned with brand messaging.</li>
-            <li>Drove 24.4% net growth in targeted Instagram followers across a focused 4-month content strategy period.</li>
-            </ul>
-            <ul class="xp-card__stack" aria-label="Tools used"><li>SEO</li><li>Content Strategy</li><li>Analytics</li></ul>
+          <article class="project">
+            <div class="project__media reveal-img"><img src="assets/smartheal.jpg" alt="Smart Heal by Runverve" loading="lazy" decoding="async"></div>
+            <div class="project__body reveal">
+              <span class="project__no">02 / Fitness tech</span>
+              <h3>Smart Heal (Runverve)</h3>
+              <p>Smart fitness tracking application with AI-powered insights and recommendations for Runverve, an IIT Madras incubated startup.</p>
+              <ul class="tags"><li>AI</li><li>Fitness Tech</li><li>Analytics</li></ul>
+            </div>
           </article>
-        </li>
-
-        <li class="xp-entry" data-reveal>
-          <div class="xp-entry__marker" aria-hidden="true"><span>03</span></div>
-          <article class="xp-card">
-            <header class="xp-card__head">
-              <div class="xp-card__titles">
-                <h4>UI/UX Designer &amp; Researcher</h4>
-                <p class="xp-card__org">Runverve | Smart Heal <span class="xp-card__pill">Sponsored Project</span></p>
-              </div>
-              <div class="xp-card__meta">
-                <span class="xp-card__date">Nov 2025 &mdash; Jan 2026</span>
-                <span class="xp-card__place">Remote</span>
-              </div>
-            </header>
-            <ul class="xp-card__points">
-            <li>Conducted user research and designed 20+ high-fidelity Figma screens for a sponsored React Native application.</li>
-            <li>Integrated third-party RESTful APIs for secure data exchange and real-time content synchronization.</li>
-            </ul>
-            <ul class="xp-card__stack" aria-label="Tools used"><li>Figma</li><li>User Research</li><li>React Native</li><li>REST APIs</li></ul>
+          <article class="project">
+            <div class="project__media reveal-img"><img src="assets/healthcompanion.jpg" alt="Health Companion app" loading="lazy" decoding="async"></div>
+            <div class="project__body reveal">
+              <span class="project__no">03 / Wellness</span>
+              <h3>Health Companion</h3>
+              <p>Personal health assistant and a mediator between doctor and patient, with wellness tracking, health goal management and a Telegram bot.</p>
+              <ul class="tags"><li>Wellness</li><li>Tracking</li><li>API</li></ul>
+            </div>
           </article>
-        </li>
-      </ol>
-    </div>
-
-    <!-- ---------- Leadership : honour wall ---------- -->
-    <div class="hof-block">
-      <h3 class="hof-block__title">
-        <span class="hof-block__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"></path></svg>
-        </span>
-        <span>Leadership</span>
-        <span class="hof-block__rule" aria-hidden="true"></span>
-        <span class="hof-block__count">05</span>
-      </h3>
-
-      <div class="honor-wall">
-      <!-- Design Society Card -->
-      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--desoc">
-        <div class="experience-card__top">
-          <div class="experience-card__logo experience-card__logo--desoc" aria-hidden="true"></div>
-          <div class="experience-card__heading">
-            <h2>Design Society</h2>
-            <p><span>Design Club</span> of KKWIEER focused on organising Tech and Non Tech Events</p>
-          </div>
-        </div>
-
-        <div class="experience-card__role">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title">PRESIDENT</div>
-            <span class="experience-card__date">2024 - Present</span>
-          </div>
-        </div>
-
-        <div class="experience-card__role">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title">VICE PRESIDENT</div>
-            <span class="experience-card__date">2023 - 2024</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Young Indians Card -->
-      <a href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA?utm_source=share&utm_medium=member_desktop&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--yi">
-        <div class="experience-card__top experience-card__top--yi">
-          <div class="experience-card__logo experience-card__logo--yi" aria-hidden="true"></div>
-          <div class="experience-card__heading experience-card__heading--yi">
-            <h2>Young Indians</h2>
-            <p><span>KKWIEER Chapter</span><br>
-               A movement for <span>Indian Youth</span> Lead, India's Future</p>
-          </div>
-        </div>
-
-        <div class="experience-card__role experience-card__role--yi">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title experience-card__role-title--yi">CHAIRMAN <span>Branding Vertical</span></div>
-            <span class="experience-card__date">2025 - Present</span>
-          </div>
-        </div>
-
-        <div class="experience-card__role experience-card__role--yi">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title experience-card__role-title--yi">CO-CHAIR <span>Road-Safety Vertical</span></div>
-            <span class="experience-card__date">2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Innovera Card -->
-      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--innovera">
-        <div class="experience-card__top experience-card__top--innovera">
-          <div class="experience-card__logo experience-card__logo--innovera" aria-hidden="true"></div>
-          <div class="experience-card__heading experience-card__heading--innovera">
-            <h2>INNOVERA</h2>
-            <p>A <span>National Level Hackathon</span> organised by KKWIEER, Nashik<br>Participants: <span>1000+</span></p>
-          </div>
-        </div>
-
-        <div class="experience-card__role experience-card__role--innovera">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title experience-card__role-ttle--innovera">HEAD OF DESIGN &amp; BRANDING</div>
-            <span class="experience-card__date">2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- ISTE Card -->
-      <div class="honor-card experience-card experience-card--iste">
-        <div class="experience-card__top experience-card__top--iste">
-          <div class="experience-card__logo experience-card__logo--iste" aria-hidden="true"></div>
-          <div class="experience-card__heading">
-            <h2>ISTE</h2>
-            <p><span>KKWIEER Chapter</span><br>The Indian Society for Technical Education is a national, professional, non-profit Society.</p>
-          </div>
-        </div>
-
-        <div class="experience-card__role">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title">CORE COMMITTEE MEMBER</div>
-            <span class="experience-card__date">2025 - Present</span>
-          </div>
+          <article class="project">
+            <div class="project__media reveal-img"><img src="assets/desocwebsite.jpg" alt="Design Society website" loading="lazy" decoding="async"></div>
+            <div class="project__body reveal">
+              <span class="project__no">04 / Web</span>
+              <h3>DeSoc Website</h3>
+              <p>Official website for the Design Society showcasing events, team and achievements.</p>
+              <ul class="tags"><li>Web Design</li><li>Frontend</li><li>UI/UX</li></ul>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project__media reveal-img"><img src="assets/medreminder.jpg" alt="Medication reminder app" loading="lazy" decoding="async"></div>
+            <div class="project__body reveal">
+              <span class="project__no">05 / Healthcare</span>
+              <h3>Medication Reminder</h3>
+              <p>Smart medication reminder app with notifications and tracking for better health management.</p>
+              <ul class="tags"><li>Healthcare</li><li>Notifications</li><li>Mobile App</li></ul>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- TEDx Card -->
-      <a href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_tedxkkwieer-internationalevent-ideasthatchangetheworld-activity-7306894825503522816-TOxg?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADcwXq4BhnXbQP_GWNoJuYomZCaG7dxfYPE" target="_blank" rel="noopener noreferrer" class="honor-card experience-card experience-card--tedx">
-        <div class="experience-card__top experience-card__top--tedx">
-          <div class="experience-card__logo experience-card__logo--tedx" aria-hidden="true"></div>
-          <div class="experience-card__heading">
-            <h2>TEDxKKWIEER</h2>
-            <p><span>International Event</span> themed 'Rise Through Resonance'</p>
-          </div>
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="sec-head">
+          <p class="sec-head__idx reveal"><span>04</span>Experience</p>
+          <h2 class="sec-head__title" id="exp-title" data-split>Roles held, teams led, work&nbsp;shipped.</h2>
+        </header>
+
+        <div class="sub-block sub-block--first">
+          <h3 class="sub-title reveal">Work experience</h3>
+          <ol class="rows">
+            <li class="row job reveal">
+              <div class="row__when"><span>Jun 2026 &mdash; Jul 2026</span><span>Nashik, India</span></div>
+              <div><h4>AI &amp; Machine Learning Intern</h4><p class="job__org">Hindustan Aeronautics Ltd &middot; Internship</p></div>
+              <div>
+                <ul class="points"><li>Engineered a RAG pipeline with semantic search and vector embeddings for 10,000+ pages and 500+ figures of aircraft manuals and accident reports.</li><li>Built retrieval with ChromaDB and Sentence Transformers, reducing document retrieval from minutes to seconds.</li><li>Used Docling for structured extraction from manuals, then deployed local Ollama LLMs for citation-backed responses and analytics.</li></ul>
+                <ul class="tags"><li>RAG</li><li>ChromaDB</li><li>Sentence Transformers</li><li>Docling</li><li>Ollama</li></ul>
+              </div>
+            </li>
+            <li class="row job reveal">
+              <div class="row__when"><span>Feb 2026 &mdash; Jun 2026</span><span>Remote</span></div>
+              <div><h4>Digital Marketing &amp; Content Strategist</h4><p class="job__org">WRS Energy Solutions &middot; Contract</p></div>
+              <div>
+                <ul class="points"><li>Applied digital marketing and SEO fundamentals to plan audience-focused content aligned with brand messaging.</li><li>Drove 24.4% net growth in targeted Instagram followers across a focused 4-month content strategy period.</li></ul>
+                <ul class="tags"><li>SEO</li><li>Content Strategy</li><li>Analytics</li></ul>
+              </div>
+            </li>
+            <li class="row job reveal">
+              <div class="row__when"><span>Nov 2025 &mdash; Jan 2026</span><span>Remote</span></div>
+              <div><h4>UI/UX Designer &amp; Researcher</h4><p class="job__org">Runverve | Smart Heal &middot; Sponsored project</p></div>
+              <div>
+                <ul class="points"><li>Conducted user research and designed 20+ high-fidelity Figma screens for a sponsored React Native application.</li><li>Integrated third-party RESTful APIs for secure data exchange and real-time content synchronisation.</li></ul>
+                <ul class="tags"><li>Figma</li><li>User Research</li><li>React Native</li><li>REST APIs</li></ul>
+              </div>
+            </li>
+          </ol>
         </div>
 
-        <div class="experience-card__role">
-          <div class="experience-card__role-header">
-            <div class="experience-card__role-title">DESIGN TEAM MEMBER</div>
-            <span class="experience-card__date">2025</span>
-          </div>
+        <div class="sub-block">
+          <h3 class="sub-title reveal">Leadership</h3>
+          <ul class="rows">
+            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_genesis2025-statelevelfest-desoc-activity-7320625012367863809-sizT" target="_blank" rel="noopener noreferrer">
+              <span class="lead__logo"><img src="assets/desoclogo.png" alt="" loading="lazy"></span>
+              <div><h4>Design Society</h4><p>Design club of KKWIEER organising tech and non-tech events</p></div>
+              <ul class="lead__roles"><li><b>President</b><time>2024 &ndash; Present</time></li><li><b>Vice President</b><time>2023 &ndash; 2024</time></li></ul>
+              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
+            </a></li>
+            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/yi-kkwieer-a67126341_unveiling-the-executive-committee-of-yi-kkwieer-ugcPost-7307449861921021954-AhHA" target="_blank" rel="noopener noreferrer">
+              <span class="lead__logo"><img src="assets/yilogo.png" alt="" loading="lazy"></span>
+              <div><h4>Young Indians</h4><p>KKWIEER Chapter &mdash; a movement for Indian youth</p></div>
+              <ul class="lead__roles"><li><b>Chairman &middot; Branding</b><time>2025 &ndash; Present</time></li><li><b>Co-Chair &middot; Road Safety</b><time>2025</time></li></ul>
+              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
+            </a></li>
+            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_innovera-hackathon-designandbranding-activity-7306278339466391552-CRrC" target="_blank" rel="noopener noreferrer">
+              <span class="lead__logo"><img src="assets/innoveralogo.png" alt="" loading="lazy"></span>
+              <div><h4>INNOVERA</h4><p>National-level hackathon with 1,000+ participants</p></div>
+              <ul class="lead__roles"><li><b>Head of Design &amp; Branding</b><time>2025</time></li></ul>
+              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
+            </a></li>
+            <li class="reveal"><div class="row lead">
+              <span class="lead__logo"><img src="assets/istelogo.png" alt="" loading="lazy"></span>
+              <div><h4>ISTE</h4><p>Indian Society for Technical Education</p></div>
+              <ul class="lead__roles"><li><b>Core Committee Member</b><time>2025 &ndash; Present</time></li></ul>
+              <span class="lead__out" aria-hidden="true"></span>
+            </div></li>
+            <li class="reveal"><a class="row lead" href="https://www.linkedin.com/posts/aditya-ahirrao-61210721a_tedxkkwieer-internationalevent-ideasthatchangetheworld-activity-7306894825503522816-TOxg" target="_blank" rel="noopener noreferrer">
+              <span class="lead__logo"><img src="assets/tedxlogo.png" alt="" loading="lazy"></span>
+              <div><h4>TEDxKKWIEER</h4><p>International event themed &lsquo;Rise Through Resonance&rsquo;</p></div>
+              <ul class="lead__roles"><li><b>Design Team Member</b><time>2025</time></li></ul>
+              <svg class="ico lead__out" aria-hidden="true"><use href="#i-out"/></svg>
+            </a></li>
+          </ul>
         </div>
-      </a>
 
-      <!-- Tic Tac Toe Game Card -->
-      <div class="honor-card honor-card--game experience-card experience-card--tictactoe">
-        <div class="tictactoe-container">
-          <h3 class="tictactoe-title">Tic Tac Toe</h3>
-          <p class="tictactoe-subtitle">Let's see if you can defeat Aditya</p>
-
-          <div class="tictactoe-status">
-            <p id="tictactoe-message">You are X, Aditya is O</p>
-          </div>
-
-          <button class="tictactoe-start-btn" id="tictactoe-start">Start Game</button>
-        </div>
-
-        <div class="tictactoe-board">
-          <button class="tictactoe-cell" data-index="0"></button>
-          <button class="tictactoe-cell" data-index="1"></button>
-          <button class="tictactoe-cell" data-index="2"></button>
-          <button class="tictactoe-cell" data-index="3"></button>
-          <button class="tictactoe-cell" data-index="4"></button>
-          <button class="tictactoe-cell" data-index="5"></button>
-          <button class="tictactoe-cell" data-index="6"></button>
-          <button class="tictactoe-cell" data-index="7"></button>
-          <button class="tictactoe-cell" data-index="8"></button>
-        </div>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Contact ---------- -->
-  <section class="contact-section" id="contact-me" aria-label="Contact">
-    <div class="section-head">
-      <h2 class="section-head__title">Contact Me</h2>
-      <div class="section-head__underline" aria-hidden="true"></div>
-      <p class="section-head__sub">Hiring, collaborating, or just curious about something I built? The form reaches me directly.</p>
-    </div>
-
-    <div class="contact-card">
-      <div class="contact-card__header">
-        <span class="contact-card__status"><i aria-hidden="true"></i> Open to internships &amp; freelance</span>
-        <h3>Let's build something</h3>
-        <p>Have a project in mind? Tell me about it — I usually reply within a day.</p>
-      </div>
-
-      <form class="contact-form" id="contactForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="from_name" placeholder="Your Name" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="from_email" placeholder="your.email@example.com" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="phone">Phone (Optional)</label>
-          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
-        </div>
-        
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-        </div>
-        
-        <button type="submit" class="contact-submit-btn">
-          <span>Send Message</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <!-- Education Timeline Section -->
-  <section id="education" class="education-section">
-    <div class="education-hero">
-      <div class="education-hero__inner">
-        <h2 class="education-hero__eyebrow">Education</h2>
-        <div class="education-hero__underline" aria-hidden="true"></div>
-      </div>
-    </div>
-
-    <div class="education-timeline">
-      <!-- Education Item 1 -->
-      <div class="education-item" data-reveal>
-        <div class="education-marker"></div>
-        <div class="education-content">
-          <div class="education-year">2015 - 2021</div>
-          <h3 class="education-degree">Central Board of Secondary Education</h3>
-          <p class="education-institution">PSBA English School Chh. Sambhajinagar</p>
-          <p class="education-field"> 82% </p>
-        </div>
-      </div>
-
-      <!-- Education Item 2 -->
-      <div class="education-item" data-reveal>
-        <div class="education-marker"></div>
-        <div class="education-content">
-          <div class="education-year">2021 - 2023</div>
-          <h3 class="education-degree">UPSC NDA | Millitary School | Govt of Maharashtra</h3>
-          <p class="education-institution">Services Preparatory Institute Chh. Sambhajinagar</p>
-          <p class="education-field">SSB - Conference Out</p>
-        </div>
-      </div>
-
-      <!-- Education Item 3 -->
-      <div class="education-item" data-reveal>
-        <div class="education-marker"></div>
-        <div class="education-content">
-          <div class="education-year">2021 - 2023</div>
-          <h3 class="education-degree">Higher Secondary Education</h3>
-          <p class="education-institution">Govt Arts and Scinece College Chh. Sambhajinagar</p>
-          <p class="education-field">State Board</p>
-        </div>
-      </div>
-
-      <!-- Education Item 4 -->
-      <div class="education-item" data-reveal>
-        <div class="education-marker"></div>
-        <div class="education-content">
-          <div class="education-year">2023 - Present</div>
-          <h3 class="education-degree">B. Tech in Computer Science and Design</h3>
-          <p class="education-institution">K K Wagh Institute of Engineering Education & Research</p>
-          <p class="education-field">CGPA : 8.76</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section">
-    <div class="projects-hero">
-      <div class="projects-hero__inner">
-        <h2 class="projects-hero__eyebrow">Projects</h2>
-        <div class="projects-hero__underline"></div>
-      </div>
-    </div>
-
-    <div class="projects-grid">
-      <!-- Project Card 1 -->
-      <div class="project-card" data-reveal>
-        <div class="project-card__image">
-          <img src="assets/swasthyam.jpg" alt="Swasthyam" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">SWASTHYAM</h3>
-          <p class="project-card__description">AI Powered Healthcare Management System and a National Campaign for Ministry of Agriculture and Farmers Welfare, Govt of India in reducing the edible oil consumption</p>
-          <div class="project-card__tags">
-            <span class="project-tag">Healthcare</span>
-            <span class="project-tag">UI/UX</span>
-            <span class="project-tag">Mobile App Development</span>
+        <div class="sub-block">
+          <h3 class="sub-title reveal">Achievements</h3>
+          <div class="trophies">
+            <figure class="trophy reveal" data-zoom="assets/achievement2.jpg" data-caption="Smart India Hackathon 2025">
+              <div class="trophy__media reveal-img"><img src="assets/achievement2.jpg" alt="Smart India Hackathon 2025" loading="lazy" decoding="async"></div>
+              <figcaption><span>Winner</span><h4>Smart India Hackathon 2025</h4><p>National winner for the Ministry of Agriculture &amp; Farmers Welfare problem statement, at BPUT Rourkela, Odisha.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement1.jpg" data-caption="ISTE Master Students Programme">
+              <div class="trophy__media reveal-img"><img src="assets/achievement1.jpg" alt="ISTE Master Students Programme" loading="lazy" decoding="async"></div>
+              <figcaption><span>Speaker</span><h4>ISTE Master Students Programme</h4><p>Invited speaker at MSP 2025 with a talk titled &ldquo;Perfection Paradox&rdquo;.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement6.jpeg" data-caption="Felicitated by the Department">
+              <div class="trophy__media reveal-img"><img src="assets/achievement6.jpeg" alt="Felicitated by the Department" loading="lazy" decoding="async"></div>
+              <figcaption><span>Felicitation</span><h4>Felicitated by the Department</h4><p>Recognised as a hackathon winner by the Department of Computer Science &amp; Design, KKWIEER.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement3.jpg" data-caption="SSB Bangalore — NDA 150">
+              <div class="trophy__media reveal-img"><img src="assets/achievement3.jpg" alt="SSB Bangalore — NDA 150" loading="lazy" decoding="async"></div>
+              <figcaption><span>Defence</span><h4>SSB Bangalore &mdash; NDA 150</h4><p>Conference-out at 17 SSB Bangalore, 2 April 2023.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement5.jpg" data-caption="Branding Chair, Young Indians">
+              <div class="trophy__media reveal-img"><img src="assets/achievement5.jpg" alt="Branding Chair, Young Indians" loading="lazy" decoding="async"></div>
+              <figcaption><span>Leadership</span><h4>Branding Chair, Young Indians</h4><p>Leading branding for social-cause and youth-empowerment drives at YI KKWIEER.</p></figcaption>
+            </figure>
+            <figure class="trophy reveal" data-zoom="assets/achievement4.jpg" data-caption="Dams of Nashik Ride">
+              <div class="trophy__media reveal-img"><img src="assets/achievement4.jpg" alt="Dams of Nashik Ride" loading="lazy" decoding="async"></div>
+              <figcaption><span>Endurance</span><h4>Dams of Nashik Ride</h4><p>Long-distance cycling expedition across the prominent dams of Nashik.</p></figcaption>
+            </figure>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Project Card 2 -->
-      <div class="project-card" data-reveal>
-        <div class="project-card__image">
-          <img src="assets/smartheal.jpg" alt="Smart Heal" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">SMART HEAL (RUNVERVE)</h3>
-          <p class="project-card__description">Smart Fitness tracking application with AI-powered insights and recommendations for Runverve (IIT Madras incubated Startup).</p>
-          <div class="project-card__tags">
-            <span class="project-tag">AI</span>
-            <span class="project-tag">Fitness Tech</span>
-            <span class="project-tag">Analytics</span>
+    <!-- ================= POSTS ================= -->
+    <section class="section section--tight" id="posts" aria-labelledby="posts-title">
+      <div class="container">
+        <header class="sec-head sec-head--row">
+          <h2 class="sec-head__title sec-head__title--sm" id="posts-title" data-split>From the feed.</h2>
+        </header>
+
+        <div class="rail" data-platform="linkedin" data-profile="https://www.linkedin.com/in/aditya-ahirrao-61210721a/">
+          <div class="rail__head">
+            <span class="rail__ico"><svg class="ico"><use href="#i-linkedin"/></svg></span>
+            <div class="rail__id"><h3>LinkedIn</h3><p>Aditya Ahirrao</p></div>
+            <a class="rail__link" href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/" target="_blank" rel="noopener noreferrer">View profile</a>
+            <div class="rail__navs"><button type="button" class="prev" aria-label="Previous LinkedIn posts"><svg class="ico"><use href="#i-arrow"/></svg></button><button type="button" class="next" aria-label="More LinkedIn posts"><svg class="ico"><use href="#i-arrow"/></svg></button></div>
           </div>
+          <div class="rail__track"></div>
         </div>
-      </div>
 
-      <!-- Project Card 3 -->
-      <div class="project-card" data-reveal>
-        <div class="project-card__image">
-          <img src="assets/healthcompanion.jpg" alt="Health Companion" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">HEALTH COMPANION</h3>
-          <p class="project-card__description">Personal health assistant and a mediator between doctor and patient with wellness tracking, health goal management and telegram bot.</p>
-          <div class="project-card__tags">
-            <span class="project-tag">Wellness</span>
-            <span class="project-tag">Tracking</span>
-            <span class="project-tag">API</span>
+        <div class="rail" data-platform="instagram" data-profile="https://www.instagram.com/alpha_maverick45">
+          <div class="rail__head">
+            <span class="rail__ico"><svg class="ico"><use href="#i-instagram"/></svg></span>
+            <div class="rail__id"><h3>Instagram</h3><p>@alpha_maverick45</p></div>
+            <a class="rail__link" href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer">View profile</a>
+            <div class="rail__navs"><button type="button" class="prev" aria-label="Previous Instagram posts"><svg class="ico"><use href="#i-arrow"/></svg></button><button type="button" class="next" aria-label="More Instagram posts"><svg class="ico"><use href="#i-arrow"/></svg></button></div>
           </div>
+          <div class="rail__track"></div>
         </div>
       </div>
+    </section>
 
-      <!-- Project Card 4 -->
-      <div class="project-card" data-reveal>
-        <div class="project-card__image">
-          <img src="assets/desocwebsite.jpg" alt="DeSoc Website" loading="lazy" decoding="async">
+    <!-- ================= CONTACT ================= -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div class="contact__lead">
+          <p class="sec-head__idx reveal"><span>05</span>Contact</p>
+          <h2 class="contact__title" id="contact-title" data-split>Let&rsquo;s build something.</h2>
+          <a class="contact__mail reveal" href="mailto:adityaahirrao17@gmail.com"><span>adityaahirrao17@gmail.com</span><svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a>
+          <ul class="contact__links">
+            <li class="reveal"><a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a></li>
+            <li class="reveal"><a href="https://github.com/adityaahirrao17-stack" target="_blank" rel="noopener noreferrer"><span>GitHub</span><svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a></li>
+            <li class="reveal"><a href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer"><span>Instagram</span><svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a></li>
+            <li class="reveal"><a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" rel="noopener noreferrer"><span>LeetCode</span><svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a></li>
+          </ul>
+          <p class="contact__note reveal">Open to internships &amp; freelance. I usually reply within a day.</p>
         </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">DESOC WEBSITE</h3>
-          <p class="project-card__description">Official website for Design Society showcasing events, team, and achievements.</p>
-          <div class="project-card__tags">
-            <span class="project-tag">Web Design</span>
-            <span class="project-tag">Frontend</span>
-            <span class="project-tag">UI/UX</span>
+
+        <form class="form glass reveal" id="contactForm" novalidate>
+          <div class="field"><input type="text" id="name" name="from_name" placeholder=" " autocomplete="name" required><label for="name">Name</label></div>
+          <div class="field"><input type="email" id="email" name="from_email" placeholder=" " autocomplete="email" required><label for="email">Email</label></div>
+          <div class="field"><input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel"><label for="phone">Phone (optional)</label></div>
+          <div class="field"><input type="text" id="subject" name="subject" placeholder=" " required><label for="subject">Subject</label></div>
+          <div class="field"><textarea id="message" name="message" placeholder=" " rows="4" required></textarea><label for="message">Message</label></div>
+          <div class="form__foot">
+            <button class="btn btn--solid" type="submit" data-magnetic><span>Send message</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
           </div>
-        </div>
+        </form>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="projects-view-all">
-      <a href="projects.html" class="view-all-btn" data-magnetic>View All Projects →</a>
-    </div>
-  </section>
-
-  <!-- ===== HALL OF FAME : Achievements ===== -->
-  <section id="achievements" class="hof-trophies">
-    <div class="hof__header">
-      <p class="hof__kicker"><span></span>Honours &amp; Recognition<span></span></p>
-      <h2 class="hof__title">Achievements</h2>
-      <p class="hof__sub">Six moments worth keeping on the wall. Select any one to view it full size.</p>
-    </div>
-
-    <div class="trophy-wall">
-      <figure class="trophy trophy--feature" data-reveal data-trophy-src="assets/achievement2.jpg" data-trophy-caption="Smart India Hackathon 2025">
-        <div class="trophy__media">
-          <img src="assets/achievement2.jpg" alt="Smart India Hackathon 2025" loading="lazy" decoding="async">
-          <span class="trophy__rank" aria-hidden="true">01</span>
-          <span class="trophy__badge trophy__badge--gold">Winner</span>
-          <span class="trophy__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
-          </span>
-        </div>
-        <figcaption class="trophy__caption">
-          <h4>Smart India Hackathon 2025</h4>
-          <p>National winner for the Ministry of Agriculture &amp; Farmers Welfare problem statement, at BPUT Rourkela, Odisha.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="trophy" data-reveal data-trophy-src="assets/achievement1.jpg" data-trophy-caption="ISTE Master Students Programme">
-        <div class="trophy__media">
-          <img src="assets/achievement1.jpg" alt="ISTE Master Students Programme" loading="lazy" decoding="async">
-          <span class="trophy__rank" aria-hidden="true">02</span>
-          <span class="trophy__badge trophy__badge--gold">Speaker</span>
-          <span class="trophy__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
-          </span>
-        </div>
-        <figcaption class="trophy__caption">
-          <h4>ISTE Master Students Programme</h4>
-          <p>Invited speaker at MSP 2025 with a talk titled &ldquo;Perfection Paradox&rdquo;.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="trophy" data-reveal data-trophy-src="assets/achievement6.jpeg" data-trophy-caption="Felicitated by the Department">
-        <div class="trophy__media">
-          <img src="assets/achievement6.jpeg" alt="Felicitated by the Department" loading="lazy" decoding="async">
-          <span class="trophy__rank" aria-hidden="true">03</span>
-          <span class="trophy__badge trophy__badge--silver">Felicitation</span>
-          <span class="trophy__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
-          </span>
-        </div>
-        <figcaption class="trophy__caption">
-          <h4>Felicitated by the Department</h4>
-          <p>Recognised as a hackathon winner by the Department of Computer Science &amp; Design, KKWIEER.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="trophy" data-reveal data-trophy-src="assets/achievement3.jpg" data-trophy-caption="SSB Bangalore &mdash; NDA 150">
-        <div class="trophy__media">
-          <img src="assets/achievement3.jpg" alt="SSB Bangalore &mdash; NDA 150" loading="lazy" decoding="async">
-          <span class="trophy__rank" aria-hidden="true">04</span>
-          <span class="trophy__badge trophy__badge--silver">Defence</span>
-          <span class="trophy__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
-          </span>
-        </div>
-        <figcaption class="trophy__caption">
-          <h4>SSB Bangalore &mdash; NDA 150</h4>
-          <p>Conference-out at 17 SSB Bangalore, 2 April 2023.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="trophy" data-reveal data-trophy-src="assets/achievement5.jpg" data-trophy-caption="Branding Chair, Young Indians">
-        <div class="trophy__media">
-          <img src="assets/achievement5.jpg" alt="Branding Chair, Young Indians" loading="lazy" decoding="async">
-          <span class="trophy__rank" aria-hidden="true">05</span>
-          <span class="trophy__badge trophy__badge--bronze">Leadership</span>
-          <span class="trophy__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
-          </span>
-        </div>
-        <figcaption class="trophy__caption">
-          <h4>Branding Chair, Young Indians</h4>
-          <p>Leading branding for social-cause and youth-empowerment drives at YI KKWIEER.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="trophy" data-reveal data-trophy-src="assets/achievement4.jpg" data-trophy-caption="Dams of Nashik Ride">
-        <div class="trophy__media">
-          <img src="assets/achievement4.jpg" alt="Dams of Nashik Ride" loading="lazy" decoding="async">
-          <span class="trophy__rank" aria-hidden="true">06</span>
-          <span class="trophy__badge trophy__badge--bronze">Endurance</span>
-          <span class="trophy__zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
-          </span>
-        </div>
-        <figcaption class="trophy__caption">
-          <h4>Dams of Nashik Ride</h4>
-          <p>Long-distance cycling expedition across the prominent dams of Nashik.</p>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <div class="experience-divider" aria-hidden="true"></div>
-
-  <!-- ---------- Latest posts : LinkedIn + Instagram rails ----------
-       social.js renders the cards from posts-data.js. To change which
-       posts appear, edit tools/posts.txt and run:
-           node tools/fetch-posts.js -->
-  <section id="posts" class="posts-section" aria-label="Latest posts">
-    <div class="section-head">
-      <h2 class="section-head__title">Latest Posts</h2>
-      <div class="section-head__underline" aria-hidden="true"></div>
-      <p class="section-head__sub">What I have been building, designing and speaking about — straight from my feeds.</p>
-    </div>
-
-    <div class="post-rail" data-platform="linkedin"
-         data-profile="https://www.linkedin.com/in/aditya-ahirrao-61210721a/">
-      <div class="post-rail__head">
-        <span class="post-rail__icon post-rail__icon--linkedin" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></svg>
-        </span>
-        <div class="post-rail__id">
-          <h3>LinkedIn</h3>
-          <p>Aditya Ahirrao</p>
-        </div>
-        <a class="post-rail__profile" href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/" target="_blank" rel="noopener noreferrer">View profile</a>
-        <div class="post-rail__navs">
-          <button type="button" class="post-rail__nav post-rail__nav--prev" aria-label="Previous LinkedIn posts">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="post-rail__nav post-rail__nav--next" aria-label="More LinkedIn posts">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
-        </div>
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__mark" aria-hidden="true">Aditya Ahirrao</p>
+      <div class="footer__row">
+        <span>&copy; 2026 Aditya Ahirrao</span>
+        <span>AI Engineer &middot; UI/UX Designer</span>
+        <a href="#home">Back to top &uarr;</a>
       </div>
-      <div class="post-rail__track"></div>
-    </div>
-
-    <div class="post-rail" data-platform="instagram"
-         data-profile="https://www.instagram.com/alpha_maverick45">
-      <div class="post-rail__head">
-        <span class="post-rail__icon post-rail__icon--instagram" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        </span>
-        <div class="post-rail__id">
-          <h3>Instagram</h3>
-          <p>@alpha_maverick45</p>
-        </div>
-        <a class="post-rail__profile" href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer">View profile</a>
-        <div class="post-rail__navs">
-          <button type="button" class="post-rail__nav post-rail__nav--prev" aria-label="Previous Instagram posts">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="post-rail__nav post-rail__nav--next" aria-label="More Instagram posts">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="post-rail__track"></div>
-    </div>
-  </section>
-
-  <!-- Footer Section -->
-  <footer class="site-footer" id="contact">
-    <div class="footer-cta">
-      <div class="footer-cta__text">
-        <p class="footer-cta__kicker">Available for opportunities</p>
-        <h2 class="footer-cta__title">Have something worth building?</h2>
-      </div>
-      <div class="footer-cta__actions">
-        <a href="mailto:adityaahirrao17@gmail.com" class="footer-cta__btn footer-cta__btn--primary" data-magnetic>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-          <span>Email me</span>
-        </a>
-        <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer"  class="footer-cta__btn" data-magnetic>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></svg>
-          <span>Connect on LinkedIn</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="footer-container">
-      <!-- Brand Section -->
-      <div class="footer-brand">
-        <h2 class="footer-logo">Aditya Ahirrao</h2>
-        <p class="footer-tagline">UI/UX Designer and App Developer passionate about crafting result-driven designs and giving your products an interesting story and look.</p>
-        
-        <!-- Social Icons -->
-        <div class="footer-social-icons">
-          <a href="https://www.instagram.com/alpha_maverick45" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://github.com/adityaahirrao17-stack" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/aditya-ahirrao-61210721a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://leetcode.com/u/alpha_maverick45/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path></svg>
-          </a>
-        </div>
-        
-        <p class="footer-reviews-text">Connect with me</p>
-        <div class="footer-review-badges">
-          <a href="assets/CV_Aditya_Ahirrao.pdf" download="CV_Aditya_Ahirrao.pdf" class="review-badge">Resume</a>
-          <a href="mailto:adityaahirrao17@gmail.com" class="review-badge">Email</a>
-        </div>
-      </div>
-
-      <!-- Portfolio Column -->
-      <div class="footer-column">
-        <h3>Portfolio</h3>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#achievements">Achievements</a></li>
-          <li><a href="#projects">Projects</a></li>
-        </ul>
-      </div>
-
-      <!-- Experience Column -->
-      <div class="footer-column">
-        <h3>Organizations</h3>
-        <ul>
-          <li><a href="#experience">Design Society</a></li>
-          <li><a href="#experience">Young Indians</a></li>
-          <li><a href="#experience">Innovera</a></li>
-          <li><a href="#experience">ISTE</a></li>
-          <li><a href="#experience">TEDxKKWIEER</a></li>
-        </ul>
-      </div>
-
-      <!-- Skills Column -->
-      <div class="footer-column">
-        <h3>Expertise</h3>
-        <ul>
-          <li><a href="#skills">UI/UX Design</a></li>
-          <li><a href="#skills">Brand Identity</a></li>
-          <li><a href="#skills">App Development</a></li>
-          <li><a href="#skills">Graphic Design</a></li>
-          <li><a href="#skills">Design Systems</a></li>
-          <li><a href="#contact-me">Contact Me</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Chevron Down -->
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-      <p>© 2026 Aditya Ahirrao. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js?v=3"></script>
-  <script src="enhance.js?v=3" defer></script>
-  <script src="posts-data.js?v=1"></script>
-  <script src="social.js?v=2" defer></script>
+  <script src="posts-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <script src="app.js?v=6" defer></script>
 </body>
 </html>
